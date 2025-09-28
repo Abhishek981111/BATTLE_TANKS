@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0e175ddb960a87248b53a7989f5fb9f5
+timeCreated: 1430901405
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 46209
+  packageName: Tanks! | Complete Project
+  packageVersion: 3.0
+  assetPath: Assets/_Tanks/Tutorial_Demo/Demo_AudioMixers/Demo_CompleteMainMix.mixer
+  uploadId: 779802

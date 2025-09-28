@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8cc27143cacc057459fccb4d05084ba3
+timeCreated: 1427119828
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 46209
+  packageName: Tanks! | Complete Project
+  packageVersion: 3.0
+  assetPath: Assets/_Completed-Assets/Prefabs/Explosives/TankExplosion.prefab
+  uploadId: 779802

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5179de9f0f78e9442816e2bf76b2439e
+timeCreated: 1426767120
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 46209
+  packageName: Tanks! | Complete Project
+  packageVersion: 3.0
+  assetPath: Assets/Materials/Tank/TankColor.mat
+  uploadId: 779802

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b9a4b321c3e9e6e458d3276dbfdccac6
+timeCreated: 1432636960
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 46209
+  packageName: Tanks! | Complete Project
+  packageVersion: 3.0
+  assetPath: Assets/_Tanks/Tutorial_Demo/Demo_Prefabs/Demo_Tanks/Demo_Tank.prefab
+  uploadId: 779802
