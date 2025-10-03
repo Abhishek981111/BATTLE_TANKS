@@ -5,6 +5,7 @@ public class TankController : MonoBehaviour
 
     public float tankSpeed;
     public float rotationSpeed;
+    public FixedJoystick joystick;
 
 
     private float movement;
@@ -20,8 +21,11 @@ public class TankController : MonoBehaviour
 
     private void Update()
     {
-        movement = Input.GetAxisRaw("Vertical");
-        rotation = Input.GetAxisRaw("Horizontal");
+        //movement = Input.GetAxisRaw("Vertical");
+        //rotation = Input.GetAxisRaw("Horizontal");
+
+        movement = joystick.Vertical;
+        rotation = joystick.Horizontal;
 
         if (rotation != 0)
         {
