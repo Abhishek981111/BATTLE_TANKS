@@ -1,40 +1,39 @@
 using UnityEngine;
 
-public class TankController : MonoBehaviour
+public class TankController 
 {
 
-    public float tankSpeed;
-    public float rotationSpeed;
-    public FixedJoystick joystick;
+    private float tankSpeed;
+    private float rotationSpeed;
+    private float movementInput;
+    private float rotationInput;
+    private FixedJoystick joystick;
+    private TankModel tankModel;
+    private TankView tankView;
 
 
-    private float movement;
-    private float rotation;
-    private Rigidbody tankRigidbody;
 
-
-
-    private void Awake()
+    public TankController(TankModel tankModel, TankView tankView, FixedJoystick joystick)
     {
-        tankRigidbody = GetComponent<Rigidbody>();
+        this.tankModel = tankModel;
+        this.tankView = GameObject.Instantiate<TankView>(tankView);
+        this.tankView.SetTankController(this);
+        this.joystick = joystick;
     }
 
-    private void Update()
+    public void GetPlayerInput()
     {
-        //movement = Input.GetAxisRaw("Vertical");
-        //rotation = Input.GetAxisRaw("Horizontal");
-
-        movement = joystick.Vertical;
-        rotation = joystick.Horizontal;
-
-        if (rotation != 0)
-        {
-            transform.Rotate(0, rotation * rotationSpeed, 0, Space.World);
-        }
+        movementInput = joystick.Vertical;
+        rotationInput = joystick.Horizontal;
     }
-    
-    private void FixedUpdate()
+
+    public Vector3 GetMovementVelocity()
     {
-        tankRigidbody.linearVelocity = transform.forward * movement * tankSpeed;
+        return movementInput * tankModel.GetMovementSpeed() * tankView.transform.forward;
+    }
+
+    public float GetRotationAngle()
+    {
+        return rotationInput * tankModel.GetRotationSpeed();
     }
 }
