@@ -11,6 +11,7 @@ namespace BATTLE_TANKS
         [SerializeField] private FixedJoystick joystick;
         [SerializeField] private float movementSpeed;
         [SerializeField] private float rotationSpeed;
+        [SerializeField] private GameObject cam;
 
 
         private void Start()
@@ -23,6 +24,11 @@ namespace BATTLE_TANKS
             tankModel = new TankModel(movementSpeed, rotationSpeed);
             tankController = new TankController(tankModel, tankView);
         }
+
+        public void SetCameraToFollowPlayer(Transform player)
+        {
+            cam.transform.SetParent(player);
+        }   
 
         public float GetJoystickHorizontalInput()
         {
