@@ -25,16 +25,26 @@ namespace BATTLE_TANKS
         public void SetCameraToFollowPlayer(Transform player)
         {
             cam.transform.SetParent(player);
-        }   
-
-        public float GetJoystickHorizontalInput()
-        {
-            return joystick.Horizontal;
         }
 
-        public float GetJoystickVerticalInput()
+        public float GetPlayerInputHorizontal()
         {
-            return joystick.Vertical;
+            float horizontal = joystick.Horizontal;
+            if (Mathf.Abs(horizontal) > Mathf.Epsilon)
+            {
+                return horizontal;
+            }
+            return Input.GetAxisRaw("Horizontal");
+        }
+
+        public float GetPlayerInputVertical()
+        {
+            float vertical = joystick.Vertical;
+            if (Mathf.Abs(vertical) > Mathf.Epsilon)
+            {
+                return vertical;
+            }
+            return Input.GetAxisRaw("Vertical");
         }
     }
 }

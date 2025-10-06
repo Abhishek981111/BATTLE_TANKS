@@ -26,13 +26,13 @@ namespace BATTLE_TANKS
 
         public Vector3 GetMovementVelocity()
         {
-            return TankService.Instance.GetJoystickVerticalInput() * tankModel.movementSpeed *
+            return TankService.Instance.GetPlayerInputVertical() * tankModel.movementSpeed *
                 tankView.transform.forward;
         }
 
         public float GetRotationAngle()
         {
-            return TankService.Instance.GetJoystickHorizontalInput() * tankModel.rotationSpeed;
+            return TankService.Instance.GetPlayerInputHorizontal() * tankModel.rotationSpeed;
         }
     }
 }
