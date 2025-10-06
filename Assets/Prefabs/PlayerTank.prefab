@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 5465003953575627338}
   - component: {fileID: 1427984079876835324}
   - component: {fileID: 3816931204128693229}
-  - component: {fileID: 1172382622705631515}
+  - component: {fileID: 8435530340335180099}
   m_Layer: 0
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -264,7 +264,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4117942, y: 2.034068, z: 2.9905443}
   m_Center: {x: -0.016708136, y: 1.0356755, z: 0.097035885}
---- !u!114 &1172382622705631515
+--- !u!114 &8435530340335180099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,11 +273,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4655675866134302960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8ebd8b4465453f42a8b586635980a8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 133a1b337f5663f47949d7cc16363927, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TankController
-  tankSpeed: 5
-  rotationSpeed: 5
+  m_EditorClassIdentifier: Assembly-CSharp::TankView
 --- !u!1 &7240967580617511493
 GameObject:
   m_ObjectHideFlags: 0
