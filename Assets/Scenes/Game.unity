@@ -322,11 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9f6771eed60104181e728beac00710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankService
-  tankView: {fileID: 8435530340335180099, guid: 315c070426fcabe4188af531225245a0, type: 3}
   joystick: {fileID: 624840466}
-  movementSpeed: 7
-  rotationSpeed: 75
   cam: {fileID: 963194225}
+  tankListSO: {fileID: 11400000, guid: dd19013955b1882439ddcf60e6e4c8af, type: 2}
 --- !u!4 &490947022
 Transform:
   m_ObjectHideFlags: 0
@@ -572,7 +570,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.4059393, y: -0, z: -0, w: 0.9139001}
-  m_LocalPosition: {x: 0, y: 20.04, z: -10}
+  m_LocalPosition: {x: 5.02, y: 19.32, z: -11.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
