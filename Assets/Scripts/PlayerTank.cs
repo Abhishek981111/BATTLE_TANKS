@@ -1,18 +1,19 @@
 using UnityEngine;
 
-public class PlayerTank : GenericSingleton<PlayerTank>
+namespace BATTLE_TANKS
 {
-    
-
-
-    void Start()
+    public class PlayerTank : GenericSingleton<PlayerTank>
     {
-        
-    }
+
+        void Start()
+        {
+
+        }
 
 
-    void Update()
-    {
-        
+        void Update()
+        {
+
+        }
     }
 }
