@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace BATTLE_TANKS
 {
-    public class TankController
+    public abstract class TankController
     {
 
-        private TankModel tankModel;
-        private TankView tankView;
+        protected TankModel tankModel;
+        protected TankView tankView;
 
 
 
@@ -14,25 +14,9 @@ namespace BATTLE_TANKS
         {
             this.tankModel = tankModel;
             this.tankView = tankModel.tankView;
-            Initialize();
         }
 
-        private void Initialize()
-        {
-            this.tankView = GameObject.Instantiate<TankView>(tankView);
-            this.tankView.SetTankController(this);
-            TankService.Instance.SetCameraToFollowPlayer(tankView.transform);
-        }
-
-        public Vector3 GetMovementVelocity()
-        {
-            return TankService.Instance.GetPlayerInputVertical() * tankModel.movementSpeed *
-                tankView.transform.forward;
-        }
-
-        public float GetRotationAngle()
-        {
-            return TankService.Instance.GetPlayerInputHorizontal() * tankModel.rotationSpeed;
-        }
+        public abstract Vector3 GetMovementVelocity();
+        public abstract float GetRotationAngle();
     }
 }

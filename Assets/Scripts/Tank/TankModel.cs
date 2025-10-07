@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BATTLE_TANKS
 {
-    public struct TankModel
+    public class TankModel
     {
 
         public TankType tankType;
