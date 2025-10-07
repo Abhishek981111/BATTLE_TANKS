@@ -6,6 +6,7 @@ namespace BATTLE_TANKS
         NONE,
         RED_TANK,
         GREEN_TANK,
-        BLUE_TANK
+        BLUE_TANK, 
+        Yellow_Tank
     }
 }

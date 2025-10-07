@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f963dc2558a42e4cb3adc08ec7dc856, type: 3}
-  m_Name: RedTankSO
+  m_Name: BlueTankSO
   m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.TankSO
-  tankType: 1
+  tankType: 3
   health: 100
   damage: 9
   movementSpeed: 10
   rotationSpeed: 60
-  tankView: {fileID: -1529400380287285959, guid: bde0429905c81604ab4d213dd5147806, type: 3}
+  tankView: {fileID: 7589581372501451222, guid: 50205dd11301771459fb58bc915a8ec0, type: 3}

@@ -18,7 +18,8 @@ namespace BATTLE_TANKS
 
         private void SpawnTank()
         {
-            tankModel = new TankModel(tankListSO.tankSOArray[0]);
+            int randomTankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
+            tankModel = new TankModel(tankListSO.tankSOArray[randomTankNumber]);
             tankController = new TankController(tankModel);
         }
 
@@ -29,20 +30,18 @@ namespace BATTLE_TANKS
 
         public float GetPlayerInputHorizontal()
         {
-            float horizontal = joystick.Horizontal;
-            if (Mathf.Abs(horizontal) > Mathf.Epsilon)
+            if (Mathf.Abs(joystick.Horizontal) > Mathf.Epsilon)
             {
-                return horizontal;
+                return joystick.Horizontal;
             }
             return Input.GetAxisRaw("Horizontal");
         }
 
         public float GetPlayerInputVertical()
         {
-            float vertical = joystick.Vertical;
-            if (Mathf.Abs(vertical) > Mathf.Epsilon)
+            if (Mathf.Abs(joystick.Vertical) > Mathf.Epsilon)
             {
-                return vertical;
+                return joystick.Vertical;
             }
             return Input.GetAxisRaw("Vertical");
         }

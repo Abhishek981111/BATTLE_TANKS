@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.TankListSO
   tankSOArray:
   - {fileID: 11400000, guid: 37f1d1a6ee6711f40aa5bc9fff90f614, type: 2}
+  - {fileID: 11400000, guid: e022d755b01b3c648a9539bcbf67e2e0, type: 2}
+  - {fileID: 11400000, guid: be0719bf5cda84f4c90277e9accd1faf, type: 2}
+  - {fileID: 11400000, guid: 5e3c9e24c0d177345aefcad5e43ce8e5, type: 2}
