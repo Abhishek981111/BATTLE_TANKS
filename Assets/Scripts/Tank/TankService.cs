@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace BATTLE_TANKS
 {
@@ -6,6 +7,7 @@ namespace BATTLE_TANKS
     {
         private TankModel tankModel;
         private TankController tankController;
+        private List<EnemyTankAI> enemyTankAIList;
         [SerializeField] private FixedJoystick joystick;
         [SerializeField] private GameObject cam;
         [SerializeField] private TankListSO tankListSO;
@@ -13,19 +15,49 @@ namespace BATTLE_TANKS
 
         private void Start()
         {
-            SpawnTank();
+            SpawnPlayerTank();
+            enemyTankAIList = new List<EnemyTankAI>();
+            SpawnEnemyTanks();
         }
 
-        private void SpawnTank()
+        private void Update()
+        {
+            for(int i=0; i< enemyTankAIList.Count; i++)
+            {
+                enemyTankAIList[i].UpdateDuration(Time.deltaTime);
+            }
+        }
+
+        private void SpawnPlayerTank()
         {
             int randomTankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
             tankModel = new TankModel(tankListSO.tankSOArray[randomTankNumber]);
             tankController = new PlayerTankController(tankModel);
         }
 
+        private void SpawnEnemyTanks()
+        {
+            for (int i = 1; i <= 3; i++)
+            {
+                SpawnEnemyTank(new Vector3(-i*10, 0, 0));
+            }
+        }
+
+        private void SpawnEnemyTank(Vector3 position)
+        {
+            int randomTankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
+            tankModel = new TankModel(tankListSO.tankSOArray[randomTankNumber]);
+            tankController = new EnemyTankController(tankModel, position);
+        }
+
         public void SetCameraToFollowPlayer(Transform player)
         {
             cam.transform.SetParent(player);
+        }
+
+        public void SetEnemyTankForUpdate(EnemyTankAI enemyTankAI)
+        {
+            enemyTankAIList.Add(enemyTankAI);
         }
 
         public float GetPlayerInputHorizontal()
