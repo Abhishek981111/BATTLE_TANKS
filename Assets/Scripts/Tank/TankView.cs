@@ -8,6 +8,7 @@ namespace BATTLE_TANKS
 
         private TankController tankController;
         private Rigidbody tankRigidbody;
+        public GameObject bulletSpawnPoint;
 
 
         private void Awake()

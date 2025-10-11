@@ -1,0 +1,49 @@
+using UnityEngine;
+
+namespace BATTLE_TANKS
+{
+    public class BulletView : MonoBehaviour
+    {
+        private BulletController bulletController;
+        private Rigidbody bulletRigidbody;
+        private float lifeTime = 5f;
+
+
+        private void Awake()
+        {
+            bulletRigidbody = GetComponent<Rigidbody>();
+        }
+
+        private void Update()
+        {
+            lifeTime -= Time.deltaTime;
+            if (lifeTime <= 0f)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public void SetBulletController(BulletController bulletController)
+        {
+            this.bulletController = bulletController;
+            FireBullet();
+        }
+
+        private void FireBullet()
+        {
+            bulletRigidbody.linearVelocity = transform.forward * bulletController.GetBulletSpeed();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<TankView>())
+            {
+                TankView tankView = other.GetComponent<TankView>();
+                Debug.Log("Collision with tank");
+            }else
+            {
+                Debug.Log("Collision with environment");
+            }
+        }
+    }
+}

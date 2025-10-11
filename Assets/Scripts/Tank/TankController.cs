@@ -18,5 +18,6 @@ namespace BATTLE_TANKS
 
         public abstract Vector3 GetMovementVelocity();
         public abstract float GetRotationAngle();
+        public abstract void FireBullet();
     }
 }

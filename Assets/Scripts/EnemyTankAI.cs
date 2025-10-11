@@ -53,8 +53,6 @@ namespace BATTLE_TANKS
             }
             return 0f;
         }
-       
-
     }
 }
 

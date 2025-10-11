@@ -29,6 +29,8 @@ namespace BATTLE_TANKS
         {
             return enemyTankAI.GetEnemyInputHorizontal() * tankModel.rotationSpeed;
         }
+
+        public override void FireBullet() {}
     }
 }
 

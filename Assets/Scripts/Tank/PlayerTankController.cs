@@ -19,6 +19,11 @@ namespace BATTLE_TANKS
             TankService.Instance.SetCameraToFollowPlayer(tankView.transform);
         }
 
+        public override void FireBullet()
+        {
+            BulletService.Instance.SpawnBullet(tankView.bulletSpawnPoint.transform);
+        }
+
         public override Vector3 GetMovementVelocity()
         {
             return TankService.Instance.GetPlayerInputVertical() * tankModel.movementSpeed *
@@ -29,5 +34,7 @@ namespace BATTLE_TANKS
         {
             return TankService.Instance.GetPlayerInputHorizontal() * tankModel.rotationSpeed;
         }
+
+
     }
 }

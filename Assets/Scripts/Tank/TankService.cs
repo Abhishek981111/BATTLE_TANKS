@@ -22,6 +22,20 @@ namespace BATTLE_TANKS
 
         private void Update()
         {
+            CheckPlayerInput();
+            UpdateEnemyTankAI();
+        }
+
+        private void CheckPlayerInput()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                tankController.FireBullet();
+            }
+        }
+        
+        private void UpdateEnemyTankAI()
+        {
             for(int i=0; i< enemyTankAIList.Count; i++)
             {
                 enemyTankAIList[i].UpdateDuration(Time.deltaTime);
@@ -47,7 +61,7 @@ namespace BATTLE_TANKS
         {
             int randomTankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
             tankModel = new TankModel(tankListSO.tankSOArray[randomTankNumber]);
-            tankController = new EnemyTankController(tankModel, position);
+            new EnemyTankController(tankModel, position);
         }
 
         public void SetCameraToFollowPlayer(Transform player)
