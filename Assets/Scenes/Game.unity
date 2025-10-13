@@ -915,6 +915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.BulletService
   bulletView: {fileID: 4681733431536297629, guid: 7ec4cac51bb6c4c45ae92b627e2aa150, type: 3}
+  bulletListSO: {fileID: 11400000, guid: 47a92c0350bf0ae4f8380580e399263e, type: 2}
 --- !u!4 &1999531668
 Transform:
   m_ObjectHideFlags: 0

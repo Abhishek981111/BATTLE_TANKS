@@ -21,5 +21,12 @@ namespace BATTLE_TANKS
         NONE,
         LEFT,
         RIGHT
-    } 
+    }
+
+    public enum BulletType
+    {
+        NORMAL,
+        FAST,
+        SLOW
+    }
 }

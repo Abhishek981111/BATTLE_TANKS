@@ -7,12 +7,19 @@ namespace BATTLE_TANKS
         private BulletModel bulletModel;
         private BulletView bulletView;
 
-        public BulletController(BulletModel bulletModel, BulletView bulletView, Transform bullet)
+        public BulletController(BulletModel bulletModel, Transform bullet)
         {
             this.bulletModel = bulletModel;
-            this.bulletView = GameObject.Instantiate<BulletView>(bulletView,
+            this.bulletView = bulletModel.bulletView;
+            
+            Instantiate(bullet);
+        }
+
+        public void Instantiate(Transform bullet)
+        {
+            bulletView = GameObject.Instantiate<BulletView>(bulletView,
                 bullet.position, bullet.rotation);
-            this.bulletView.SetBulletController(this);
+            bulletView.SetBulletController(this);
         }
 
         public float GetBulletSpeed()

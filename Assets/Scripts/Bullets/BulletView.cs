@@ -39,11 +39,9 @@ namespace BATTLE_TANKS
             if (other.GetComponent<TankView>())
             {
                 TankView tankView = other.GetComponent<TankView>();
-                Debug.Log("Collision with tank");
-            }else
-            {
-                Debug.Log("Collision with environment");
+                tankView.TakeDamage();
             }
+            Destroy(gameObject);
         }
     }
 }

@@ -33,5 +33,10 @@ namespace BATTLE_TANKS
         {
             this.tankController = tankController;
         }
+
+        public void TakeDamage()
+        {
+            Destroy(gameObject);
+        }
     }
 }
