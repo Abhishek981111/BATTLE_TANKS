@@ -6,7 +6,10 @@ namespace BATTLE_TANKS
     {
 
         private EnemyTankAI enemyTankAI;
-        public EnemyTankController(TankModel tankModel, Vector3 position) : base(tankModel)
+
+
+        public EnemyTankController(TankModel tankModel, TankView tankView,
+            Vector3 position) : base(tankModel, tankView)
         {
             Initialize(position);
         }

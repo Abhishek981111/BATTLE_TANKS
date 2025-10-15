@@ -309,6 +309,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankView
   bulletSpawnPoint: {fileID: 4585045296624926111}
+  tankBody:
+  - {fileID: 3671884075488978518, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}
+  - {fileID: -4514488310174735328, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}
+  - {fileID: -8129601549157164807, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}
+  - {fileID: 6377940651434891802, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}
 --- !u!1 &7240967580617511493
 GameObject:
   m_ObjectHideFlags: 0

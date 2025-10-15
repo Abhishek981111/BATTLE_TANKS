@@ -10,7 +10,7 @@ namespace BATTLE_TANKS
         public float damage;
         public float movementSpeed;
         public float rotationSpeed;
-        public TankView tankView;
+        public Material tankMaterial;
 
 
         public TankModel(TankSO tankSO)
@@ -20,7 +20,7 @@ namespace BATTLE_TANKS
             damage = tankSO.damage;
             movementSpeed = tankSO.movementSpeed;
             rotationSpeed = tankSO.rotationSpeed;
-            tankView = tankSO.tankView;
+            tankMaterial = tankSO.tankMaterial;
         }
         
     }

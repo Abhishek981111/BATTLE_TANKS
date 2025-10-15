@@ -10,6 +10,6 @@ namespace BATTLE_TANKS
         public float damage;
         public float movementSpeed;
         public float rotationSpeed;
-        public TankView tankView;
+        public Material tankMaterial;
     }
 }

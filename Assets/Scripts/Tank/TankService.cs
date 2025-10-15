@@ -11,6 +11,7 @@ namespace BATTLE_TANKS
         [SerializeField] private FixedJoystick joystick;
         [SerializeField] private GameObject cam;
         [SerializeField] private TankListSO tankListSO;
+        [SerializeField] private TankView tankView;
 
 
         private void Start()
@@ -46,7 +47,7 @@ namespace BATTLE_TANKS
         {
             int randomTankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
             tankModel = new TankModel(tankListSO.tankSOArray[randomTankNumber]);
-            tankController = new PlayerTankController(tankModel);
+            tankController = new PlayerTankController(tankModel, tankView);
         }
 
         private void SpawnEnemyTanks()
@@ -61,7 +62,7 @@ namespace BATTLE_TANKS
         {
             int randomTankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
             tankModel = new TankModel(tankListSO.tankSOArray[randomTankNumber]);
-            new EnemyTankController(tankModel, position);
+            new EnemyTankController(tankModel, tankView, position);
         }
 
         public void SetCameraToFollowPlayer(Transform player)
