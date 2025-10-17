@@ -47,7 +47,12 @@ namespace BATTLE_TANKS
             }
         }
 
-        public void TakeDamage()
+        public void TakeDamage(float damage)
+        {
+            tankController.ReduceHealth(damage);
+        }
+        
+        public void DestroyTank()
         {
             Destroy(gameObject);
         }

@@ -18,8 +18,8 @@ namespace BATTLE_TANKS
                 if (bulletListSO.bulletSOArray[i].bulletType == bulletType)
                 {
                     bulletModel = new BulletModel(bulletListSO.bulletSOArray[i]);
-                    bulletController = new BulletController(bulletModel, bulletView,
-                        bulletSpawnPoint, bulletSpawnRotation);
+                    bulletController = new BulletController(bulletModel,
+                        bulletView, bulletSpawnPoint, bulletSpawnRotation);
                 }
             }
         }

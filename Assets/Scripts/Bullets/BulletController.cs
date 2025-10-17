@@ -27,6 +27,11 @@ namespace BATTLE_TANKS
         {
             return bulletModel.bulletSpeed;
         }
+
+        public float GetBulletDamage()
+        {
+            return bulletModel.bulletDamage;
+        }
     }
 }
 

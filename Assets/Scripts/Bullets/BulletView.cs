@@ -6,21 +6,11 @@ namespace BATTLE_TANKS
     {
         private BulletController bulletController;
         private Rigidbody bulletRigidbody;
-        private float lifeTime = 5f;
 
 
         private void Awake()
         {
             bulletRigidbody = GetComponent<Rigidbody>();
-        }
-
-        private void Update()
-        {
-            lifeTime -= Time.deltaTime;
-            if (lifeTime <= 0f)
-            {
-                Destroy(gameObject);
-            }
         }
 
         public void SetBulletController(BulletController bulletController)
@@ -39,7 +29,7 @@ namespace BATTLE_TANKS
             if (other.GetComponent<TankView>())
             {
                 TankView tankView = other.GetComponent<TankView>();
-                tankView.TakeDamage();
+                tankView.TakeDamage(bulletController.GetBulletDamage());
             }
             Destroy(gameObject);
         }
