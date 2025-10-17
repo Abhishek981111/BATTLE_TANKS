@@ -7,18 +7,19 @@ namespace BATTLE_TANKS
         private BulletModel bulletModel;
         private BulletView bulletView;
 
-        public BulletController(BulletModel bulletModel, Transform bullet)
+        public BulletController(BulletModel bulletModel, BulletView bulletView,
+            Vector3 bulletSpawnPoint, Quaternion bulletSpawnRotation)
         {
             this.bulletModel = bulletModel;
-            this.bulletView = bulletModel.bulletView;
+            this.bulletView = bulletView;
             
-            Instantiate(bullet);
+            Instantiate(bulletSpawnPoint, bulletSpawnRotation);
         }
 
-        public void Instantiate(Transform bullet)
+        public void Instantiate(Vector3 bulletSpawnPoint, Quaternion bulletSpawnRotation)
         {
             bulletView = GameObject.Instantiate<BulletView>(bulletView,
-                bullet.position, bullet.rotation);
+                bulletSpawnPoint, bulletSpawnRotation);
             bulletView.SetBulletController(this);
         }
 

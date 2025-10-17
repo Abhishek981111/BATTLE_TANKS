@@ -7,7 +7,6 @@ namespace BATTLE_TANKS
         public BulletType bulletType;
         public float bulletSpeed;
         public float bulletDamage;
-        public BulletView bulletView;
 
 
         public BulletModel(BulletSO bulletSO)
@@ -15,7 +14,6 @@ namespace BATTLE_TANKS
             bulletType = bulletSO.bulletType;
             bulletSpeed = bulletSO.bulletSpeed;
             bulletDamage = bulletSO.bulletDamage;
-            bulletView = bulletSO.bulletView;
         }
        
     }

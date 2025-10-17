@@ -10,10 +10,18 @@ namespace BATTLE_TANKS
         [SerializeField] private BulletListSO bulletListSO;
 
 
-        public void SpawnBullet(Transform bullet)
+        public void SpawnBullet(Vector3 bulletSpawnPoint, Quaternion bulletSpawnRotation,
+            BulletType bulletType)
         {
-            bulletModel = new BulletModel(bulletListSO.bulletSOArray[0]);
-            bulletController = new BulletController(bulletModel, bullet);
+            for (int i = 0; i < bulletListSO.bulletSOArray.Length; i++)
+            {
+                if (bulletListSO.bulletSOArray[i].bulletType == bulletType)
+                {
+                    bulletModel = new BulletModel(bulletListSO.bulletSOArray[i]);
+                    bulletController = new BulletController(bulletModel, bulletView,
+                        bulletSpawnPoint, bulletSpawnRotation);
+                }
+            }
         }
     }
 }

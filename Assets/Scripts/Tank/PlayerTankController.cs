@@ -22,7 +22,11 @@ namespace BATTLE_TANKS
 
         public override void FireBullet()
         {
-            BulletService.Instance.SpawnBullet(tankView.bulletSpawnPoint.transform);
+            Vector3 bulletSpawnPoint = tankView.bulletSpawnPoint.transform.position;
+
+            Quaternion bulletSpawnRotation = tankView.bulletSpawnPoint.transform.rotation;
+            BulletService.Instance.SpawnBullet(bulletSpawnPoint, bulletSpawnRotation,
+                tankModel.bulletType);
         }
 
         public override Vector3 GetMovementVelocity()

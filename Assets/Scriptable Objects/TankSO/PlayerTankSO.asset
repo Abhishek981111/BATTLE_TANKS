@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PlayerTankSO
   m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.TankSO
   tankType: 1
-  health: 100
+  bulletType: 2
+  health: 150
   damage: 29
   movementSpeed: 7
   rotationSpeed: 75

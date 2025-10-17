@@ -6,6 +6,7 @@ namespace BATTLE_TANKS
     {
 
         public TankType tankType;
+        public BulletType bulletType;
         public float health;
         public float damage;
         public float movementSpeed;
@@ -16,6 +17,7 @@ namespace BATTLE_TANKS
         public TankModel(TankSO tankSO)
         {
             tankType = tankSO.tankType;
+            bulletType = tankSO.bulletType;
             health = tankSO.health;
             damage = tankSO.damage;
             movementSpeed = tankSO.movementSpeed;

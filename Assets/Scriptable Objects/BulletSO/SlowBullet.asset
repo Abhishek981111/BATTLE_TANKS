@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.BulletSO
   bulletType: 2
   bulletSpeed: 10
-  bulletDamage: 25
-  bulletView: {fileID: 4681733431536297629, guid: cbcf02def735bd34f99f82c7273deec6, type: 3}
+  bulletDamage: 75

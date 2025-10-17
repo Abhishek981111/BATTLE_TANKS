@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GreenTankSO
   m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.TankSO
   tankType: 2
+  bulletType: 0
   health: 100
   damage: 9
   movementSpeed: 10

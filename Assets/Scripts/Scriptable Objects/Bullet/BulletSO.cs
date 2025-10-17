@@ -8,7 +8,7 @@ namespace BATTLE_TANKS
         public BulletType bulletType;
         public float bulletSpeed;
         public float bulletDamage;
-        public BulletView bulletView;
+
     }
 }
 
