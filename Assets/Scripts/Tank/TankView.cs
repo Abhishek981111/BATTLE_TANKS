@@ -9,7 +9,7 @@ namespace BATTLE_TANKS
 
         private TankController tankController;
         private Rigidbody tankRigidbody;
-        public GameObject bulletSpawnPoint;
+        public GameObject bulletSpawnPosition;
         public List<MeshRenderer> tankBody;
 
 

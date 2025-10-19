@@ -10,7 +10,7 @@ namespace BATTLE_TANKS
         [SerializeField] private BulletListSO bulletListSO;
 
 
-        public void SpawnBullet(Vector3 bulletSpawnPoint, Quaternion bulletSpawnRotation,
+        public void SpawnBullet(Vector3 bulletSpawnPosition, Quaternion bulletSpawnRotation,
             BulletType bulletType)
         {
             for (int i = 0; i < bulletListSO.bulletSOArray.Length; i++)
@@ -19,7 +19,7 @@ namespace BATTLE_TANKS
                 {
                     bulletModel = new BulletModel(bulletListSO.bulletSOArray[i]);
                     bulletController = new BulletController(bulletModel,
-                        bulletView, bulletSpawnPoint, bulletSpawnRotation);
+                        bulletView, bulletSpawnPosition, bulletSpawnRotation);
                 }
             }
         }

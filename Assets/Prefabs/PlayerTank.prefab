@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510466039580979739}
   m_Layer: 0
-  m_Name: Bullet Spawn Point
+  m_Name: Bullet Spawn Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133a1b337f5663f47949d7cc16363927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankView
-  bulletSpawnPoint: {fileID: 4585045296624926111}
+  bulletSpawnPosition: {fileID: 4585045296624926111}
   tankBody:
   - {fileID: 3671884075488978518, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}
   - {fileID: -4514488310174735328, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}

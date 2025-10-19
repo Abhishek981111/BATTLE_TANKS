@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -22,10 +21,10 @@ namespace BATTLE_TANKS
 
         public override void FireBullet()
         {
-            Vector3 bulletSpawnPoint = tankView.bulletSpawnPoint.transform.position;
+            Vector3 bulletSpawnPosition = tankView.bulletSpawnPosition.transform.position;
 
-            Quaternion bulletSpawnRotation = tankView.bulletSpawnPoint.transform.rotation;
-            BulletService.Instance.SpawnBullet(bulletSpawnPoint, bulletSpawnRotation,
+            Quaternion bulletSpawnRotation = tankView.bulletSpawnPosition.transform.rotation;
+            BulletService.Instance.SpawnBullet(bulletSpawnPosition, bulletSpawnRotation,
                 tankModel.bulletType);
         }
 
