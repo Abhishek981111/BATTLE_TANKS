@@ -6,33 +6,33 @@ namespace BATTLE_TANKS
     public class TankService : GenericSingleton<TankService>
     {
         private TankModel tankModel;
-        private TankController tankController;
+        //private TankController tankController;
         private List<EnemyTankAI> enemyTankAIList;
         [SerializeField] private FixedJoystick joystick;
         [SerializeField] private GameObject cam;
         [SerializeField] private TankListSO tankListSO;
-        [SerializeField] private TankView tankView;
+        //[SerializeField] private TankView tankView;
 
 
         private void Start()
         {
-            SpawnPlayerTank();
-            enemyTankAIList = new List<EnemyTankAI>();
-            SpawnEnemyTanks();
+            //SpawnPlayerTank();
+            //enemyTankAIList = new List<EnemyTankAI>();
+            //SpawnEnemyTanks();
         }
 
-        private void Update()
+        /*private void Update()
         {
             CheckPlayerInput();
             UpdateEnemyTankAI();
-        }
+        }*/
 
         private void CheckPlayerInput()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                tankController.FireBullet();
-            }
+            // if (Input.GetKeyDown(KeyCode.Space))
+            // {
+            //     tankController.FireBullet();
+            // }
         }
         
         private void UpdateEnemyTankAI()
@@ -46,8 +46,8 @@ namespace BATTLE_TANKS
         private void SpawnPlayerTank()
         {
             int randomTankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
-            tankModel = new TankModel(tankListSO.tankSOArray[randomTankNumber]);
-            tankController = new PlayerTankController(tankModel, tankView);
+            tankModel = new TankModel(tankListSO.tankSOArray[2]);
+            //tankController = new PlayerTankController(tankModel, tankView);
         }
 
         private void SpawnEnemyTanks()
@@ -62,7 +62,7 @@ namespace BATTLE_TANKS
         {
             int randomTankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
             tankModel = new TankModel(tankListSO.tankSOArray[randomTankNumber]);
-            new EnemyTankController(tankModel, tankView, position);
+            //new EnemyTankController(tankModel, tankView, position);
         }
 
         public void SetCameraToFollowPlayer(Transform player)

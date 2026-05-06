@@ -89,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 38ecbdd769d0c6249a06d1263c60b778, type: 2}
     - target: {fileID: 919132149155446097, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
       propertyPath: m_Name
-      value: Blue Tank
+      value: Enemy Blue Tank
       objectReference: {fileID: 0}
     - target: {fileID: 1522006957048395320, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -114,7 +114,7 @@ PrefabInstance:
       addedObject: {fileID: 4064435256710488190}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7589581372501451222}
+      addedObject: {fileID: 8249487475387968440}
   m_SourcePrefab: {fileID: 100100000, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
 --- !u!4 &8324124205964066822 stripped
 Transform:
@@ -149,7 +149,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
@@ -176,7 +176,7 @@ CapsuleCollider:
   m_Height: 2.3476424
   m_Direction: 1
   m_Center: {x: 0.015983343, y: 0.6738212, z: 0.004827857}
---- !u!114 &7589581372501451222
+--- !u!114 &8249487475387968440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,9 +185,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8705152897048402620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133a1b337f5663f47949d7cc16363927, type: 3}
+  m_Script: {fileID: 11500000, guid: 72c6d4edfaeb0174192dc3b686d1f84a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.TankView
+  m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.EnemyTankView
   bulletSpawnPosition: {fileID: 2520665379296874311}
   tankBody:
   - {fileID: 4867739868979831831, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}

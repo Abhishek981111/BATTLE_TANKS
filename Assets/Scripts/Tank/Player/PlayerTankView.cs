@@ -4,10 +4,9 @@ using System.Collections.Generic;
 
 namespace BATTLE_TANKS
 {
-    public class TankView : MonoBehaviour
+    public class PlayerTankView : MonoBehaviour
     {
-
-        private TankController tankController;
+        private PlayerTankController playerTankController;
         private Rigidbody tankRigidbody;
         public GameObject bulletSpawnPosition;
         public List<MeshRenderer> tankBody;
@@ -20,27 +19,27 @@ namespace BATTLE_TANKS
 
         private void Update()
         {
-            if (tankController.GetRotationAngle() != 0)
+            if (playerTankController.GetRotationAngle() != 0)
             {
-                transform.Rotate(transform.up, tankController.GetRotationAngle() * Time.deltaTime);
+                transform.Rotate(transform.up, playerTankController.GetRotationAngle() * Time.deltaTime);
             }
         }
 
         private void FixedUpdate()
         {
-            tankRigidbody.linearVelocity = tankController.GetMovementVelocity();
+            tankRigidbody.linearVelocity = playerTankController.GetMovementVelocity();
         }
 
 
-        public void SetTankController(TankController tankController)
+        public void SetTankController(PlayerTankController playerTankController)
         {
-            this.tankController = tankController;
+            this.playerTankController = playerTankController;
             UpdateTankColor();
         }
 
         private void UpdateTankColor()
         {
-            Material material = tankController.GetMaterial();
+            Material material = playerTankController.GetMaterial();
             for (int i = 0; i < tankBody.Count; i++)
             {
                 tankBody[i].material = material;
@@ -49,9 +48,9 @@ namespace BATTLE_TANKS
 
         public void TakeDamage(float damage)
         {
-            tankController.ReduceHealth(damage);
+            playerTankController.ReduceHealth(damage);
         }
-        
+
         public void DestroyTank()
         {
             Destroy(gameObject);

@@ -6,7 +6,7 @@ namespace BATTLE_TANKS
     {
         private BulletController bulletController;
         private Rigidbody bulletRigidbody;
-
+        
 
         private void Awake()
         {
@@ -26,10 +26,10 @@ namespace BATTLE_TANKS
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<TankView>())
+            if (other.GetComponent<EnemyTankView>())
             {
-                TankView tankView = other.GetComponent<TankView>();
-                tankView.TakeDamage(bulletController.GetBulletDamage());
+                EnemyTankView enemyTankView = other.GetComponent<EnemyTankView>();
+                enemyTankView.TakeDamage(bulletController.GetBulletDamage());
             }
             Destroy(gameObject);
         }
