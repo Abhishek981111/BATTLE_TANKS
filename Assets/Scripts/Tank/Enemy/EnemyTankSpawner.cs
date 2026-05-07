@@ -4,22 +4,26 @@ namespace BATTLE_TANKS
 {
     public class EnemyTankSpawner : GenericSingleton<EnemyTankSpawner>
     {
-        protected TankModel tankModel;
-        [SerializeField] protected Transform spawnPosition;
-        [SerializeField] protected TankListSO tankListSO;
-        [SerializeField] protected EnemyTankView enemyTankView;
+        private TankModel tankModel;
+        [SerializeField] private Transform[] spawnPosition;
+        [SerializeField] private TankListSO tankListSO;
+        [SerializeField] private EnemyTankView enemyTankView;
 
         private void Start()
         {
-            SpawnEnemyTank();
+            SpawnEnemyTanks();
         }
 
-        protected void SpawnEnemyTank()
+        protected void SpawnEnemyTanks()
         {
-            int tankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
-            tankModel = new TankModel(tankListSO.tankSOArray[0]);
-            new EnemyTankController(tankModel, enemyTankView,
-                spawnPosition.position);
+            for (int i = 0; i < spawnPosition.Length; i++)
+            {
+                int tankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
+                tankModel = new TankModel(tankListSO.tankSOArray[tankNumber]);
+                
+                new EnemyTankController(tankModel, enemyTankView,
+                    spawnPosition[i].position);
+            }
         }
     }
 }

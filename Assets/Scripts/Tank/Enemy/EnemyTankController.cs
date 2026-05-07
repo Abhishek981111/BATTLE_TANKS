@@ -5,9 +5,9 @@ namespace BATTLE_TANKS
     public class EnemyTankController 
     {
         private EnemyTankAI enemyTankAI;
-        protected EnemyTankView enemyTankView;
-        protected TankModel tankModel;
-        protected float currentHealth;
+        private EnemyTankView enemyTankView;
+        private TankModel tankModel;
+        private float currentHealth;
 
         public EnemyTankController(TankModel tankModel, EnemyTankView enemyTankView,
             Vector3 position){

@@ -6,17 +6,30 @@ namespace BATTLE_TANKS
     public class PlayerTankController 
     {
 
-        protected TankModel tankModel;
-        protected float currentHealth;
-        protected PlayerTankView playerTankView;
+        private TankModel tankModel;
+        private float currentHealth;
+        private PlayerTankView playerTankView;
+        private PlayerInput playerInput;
+        
 
         public PlayerTankController(TankModel tankModel, PlayerTankView playerTankView,
-            Vector3 spawnPosition)
+            Vector3 spawnPosition, PlayerInput playerInput)
         {
             this.tankModel = tankModel;
             currentHealth = tankModel.health;
             this.playerTankView = playerTankView;
+            this.playerInput = playerInput;
+
             Initialize(spawnPosition);
+        }
+
+        private void Initialize(Vector3 spawnPosition)
+        {
+            playerTankView = GameObject.Instantiate<PlayerTankView>(playerTankView,
+                spawnPosition, Quaternion.identity);
+            playerTankView.SetTankController(this);
+
+            PlayerTankSpawner.Instance.SetCameraToFollowPlayer(playerTankView.transform);
         }
 
         public Material GetMaterial(){
@@ -27,14 +40,6 @@ namespace BATTLE_TANKS
             currentHealth -= damage;
         }
 
-        private void Initialize(Vector3 spawnPosition)
-        {
-            playerTankView = GameObject.Instantiate<PlayerTankView>(playerTankView,
-                spawnPosition, Quaternion.identity);
-            playerTankView.SetTankController(this);
-
-            TankService.Instance.SetCameraToFollowPlayer(playerTankView.transform);
-        }
 
         public void FireBullet()
         {
@@ -47,13 +52,13 @@ namespace BATTLE_TANKS
 
         public Vector3 GetMovementVelocity()
         {
-            return TankService.Instance.GetPlayerInputVertical() * tankModel.movementSpeed *
+            return playerInput.GetPlayerVerticalInput() * tankModel.movementSpeed *
                 playerTankView.transform.forward;
         }
 
         public float GetRotationAngle()
         {
-            return TankService.Instance.GetPlayerInputHorizontal() * tankModel.rotationSpeed;
+            return playerInput.GetPlayerHorizontalInput() * tankModel.rotationSpeed;
         }
 
 
