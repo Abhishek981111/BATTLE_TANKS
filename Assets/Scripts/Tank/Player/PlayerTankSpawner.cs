@@ -5,7 +5,6 @@ namespace BATTLE_TANKS
     public class PlayerTankSpawner : GenericSingleton<PlayerTankSpawner>
     {
         private TankModel tankModel;
-        private PlayerInput playerInput;
         [SerializeField] private Transform spawnPosition;
         [SerializeField] private TankListSO tankListSO;
         [SerializeField] private PlayerTankView playerTankView;
@@ -22,10 +21,9 @@ namespace BATTLE_TANKS
         {
             int tankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
             tankModel = new TankModel(tankListSO.tankSOArray[tankNumber]);
-            playerInput = new PlayerInput(fixedJoystick);
 
             new PlayerTankController(tankModel, playerTankView,
-                spawnPosition.position, playerInput);
+                spawnPosition.position, fixedJoystick);
         }
 
         public void SetCameraToFollowPlayer(Transform playerTransform)

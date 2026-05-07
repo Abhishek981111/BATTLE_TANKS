@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BATTLE_TANKS
 {
-    public class PlayerTankView : MonoBehaviour
+    public class PlayerTankView : MonoBehaviour, IDamageable
     {
         private PlayerTankController playerTankController;
         private Rigidbody tankRigidbody;
@@ -19,6 +19,8 @@ namespace BATTLE_TANKS
 
         private void Update()
         {
+            playerTankController.CheckForPlayerInput();
+            
             if (playerTankController.GetRotationAngle() != 0)
             {
                 transform.Rotate(transform.up, playerTankController.GetRotationAngle() * Time.deltaTime);
@@ -46,7 +48,7 @@ namespace BATTLE_TANKS
             }
         }
 
-        public void TakeDamage(float damage)
+        public void Damage(float damage)
         {
             playerTankController.ReduceHealth(damage);
         }

@@ -26,10 +26,10 @@ namespace BATTLE_TANKS
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<EnemyTankView>())
+            if (other.GetComponent<IDamageable>() != null)
             {
-                EnemyTankView enemyTankView = other.GetComponent<EnemyTankView>();
-                enemyTankView.TakeDamage(bulletController.GetBulletDamage());
+                IDamageable enemyTankView = other.GetComponent<IDamageable>();
+                enemyTankView.Damage(bulletController.GetBulletDamage());
             }
             Destroy(gameObject);
         }

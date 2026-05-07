@@ -7,18 +7,18 @@ namespace BATTLE_TANKS
     {
 
         private TankModel tankModel;
-        private float currentHealth;
+        private TankHealth tankHealth;
         private PlayerTankView playerTankView;
-        private PlayerInput playerInput;
+        private FixedJoystick fixedJoystick;
         
 
         public PlayerTankController(TankModel tankModel, PlayerTankView playerTankView,
-            Vector3 spawnPosition, PlayerInput playerInput)
+            Vector3 spawnPosition, FixedJoystick fixedJoystick)
         {
             this.tankModel = tankModel;
-            currentHealth = tankModel.health;
+            tankHealth = new TankHealth(tankModel.health);
             this.playerTankView = playerTankView;
-            this.playerInput = playerInput;
+            this.fixedJoystick = fixedJoystick;
 
             Initialize(spawnPosition);
         }
@@ -32,12 +32,20 @@ namespace BATTLE_TANKS
             PlayerTankSpawner.Instance.SetCameraToFollowPlayer(playerTankView.transform);
         }
 
-        public Material GetMaterial(){
+        public Material GetMaterial()
+        {
             return tankModel.tankMaterial;
         }
 
-        public void ReduceHealth(float damage){
-            currentHealth -= damage;
+        public void ReduceHealth(float damage)
+        {
+            tankHealth.ReduceHealth(damage);
+
+            if (tankHealth.IsAlive())
+            {
+                return;
+            }
+            playerTankView.DestroyTank();
         }
 
 
@@ -52,15 +60,22 @@ namespace BATTLE_TANKS
 
         public Vector3 GetMovementVelocity()
         {
-            return playerInput.GetPlayerVerticalInput() * tankModel.movementSpeed *
+            return fixedJoystick.Vertical * tankModel.movementSpeed *
                 playerTankView.transform.forward;
         }
 
         public float GetRotationAngle()
         {
-            return playerInput.GetPlayerHorizontalInput() * tankModel.rotationSpeed;
+            return fixedJoystick.Horizontal * tankModel.rotationSpeed;
         }
 
+        public void CheckForPlayerInput()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                FireBullet();
+            }
+        }
 
     }
 }
