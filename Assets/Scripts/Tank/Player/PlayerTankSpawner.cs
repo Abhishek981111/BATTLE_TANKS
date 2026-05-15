@@ -28,7 +28,7 @@ namespace BATTLE_TANKS
 
         public void SetCameraToFollowPlayer(Transform playerTransform)
         {
-            cam.transform.position = playerTransform.position;
+            cam.transform.position = playerTransform.position + new Vector3 ( 0, 12, -8);
             cam.transform.SetParent(playerTransform);
         }
     }

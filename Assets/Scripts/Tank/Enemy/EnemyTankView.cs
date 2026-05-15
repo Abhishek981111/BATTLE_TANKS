@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
-
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace BATTLE_TANKS
 {
@@ -10,11 +10,19 @@ namespace BATTLE_TANKS
         private Rigidbody tankRigidbody;
         public GameObject bulletSpawnPosition;
         public List<MeshRenderer> tankBody;
+        private NavMeshAgent navMeshAgent;
+        private Vector3 myDestination = new Vector3(0, 0, -30);
 
 
         private void Awake()
         {
             tankRigidbody = GetComponent<Rigidbody>();
+            navMeshAgent = GetComponent<NavMeshAgent>();
+        }
+
+        private void Update()
+        {
+            navMeshAgent.destination = myDestination;
         }
 
         public void SetTankController(EnemyTankController enemyTankController)
