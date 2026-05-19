@@ -6,29 +6,44 @@ namespace BATTLE_TANKS
     {
         private EnemyTankAI enemyTankAI;
         private EnemyTankView enemyTankView;
-        private TankModel tankModel;
-        private float currentHealth;
+        private EnemyTankModel enemyTankModel;  
+        private TankHealth tankHealth;
+        private int currentPathNumber;
 
-        public EnemyTankController(TankModel tankModel, EnemyTankView enemyTankView,
-            Vector3 position){
+        public EnemyTankController(EnemyTankModel enemyTankModel, EnemyTankView enemyTankView)
+        {
+            this.enemyTankModel = enemyTankModel;
             this.enemyTankView = enemyTankView;
-            this.tankModel = tankModel;
-            currentHealth = tankModel.health;
-            Initialize(position);
+            tankHealth = new TankHealth(enemyTankModel.health);
+            currentPathNumber = 0;
+            Initialize(enemyTankModel.patrolPath[0]);
         }
 
-        private void Initialize(Vector3 position){
+        private void Initialize(Vector3 position)
+        {
             enemyTankView = GameObject.Instantiate<EnemyTankView>(enemyTankView, position, 
                 Quaternion.identity);
             enemyTankView.SetTankController(this);
         }
 
-        public Material GetMaterial(){
-            return tankModel.tankMaterial;
+        public Material GetMaterial()
+        {
+            return enemyTankModel.tankMaterial;
         }
 
-        public void ReduceHealth(float damage){
-            currentHealth -= damage;
+        public void ReduceHealth(float damage)
+        {
+            tankHealth.ReduceHealth(damage);
+            if(tankHealth.IsAlive()){
+                return;
+            }
+            enemyTankView.DestroyTank();
+        }
+
+        public Vector3 GetNextDestination()
+        {
+            currentPathNumber = (currentPathNumber + 1) % enemyTankModel.patrolPath.Length;
+            return enemyTankModel.patrolPath[currentPathNumber];
         }
     }
 }
