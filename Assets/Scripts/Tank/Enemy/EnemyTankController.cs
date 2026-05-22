@@ -1,22 +1,20 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace BATTLE_TANKS
 {
     public class EnemyTankController 
     {
-        private EnemyTankAI enemyTankAI;
         private EnemyTankView enemyTankView;
-        private EnemyTankModel enemyTankModel;  
+        private TankModel tankModel;  
         private TankHealth tankHealth;
-        private int currentPathNumber;
 
-        public EnemyTankController(EnemyTankModel enemyTankModel, EnemyTankView enemyTankView)
+        public EnemyTankController(TankModel tankModel, EnemyTankView enemyTankView, Vector3 spawnPosition)
         {
-            this.enemyTankModel = enemyTankModel;
+            this.tankModel = tankModel;
             this.enemyTankView = enemyTankView;
-            tankHealth = new TankHealth(enemyTankModel.health);
-            currentPathNumber = 0;
-            Initialize(enemyTankModel.patrolPath[0]);
+            tankHealth = new TankHealth(tankModel.health);
+            Initialize(spawnPosition);
         }
 
         private void Initialize(Vector3 position)
@@ -28,7 +26,7 @@ namespace BATTLE_TANKS
 
         public Material GetMaterial()
         {
-            return enemyTankModel.tankMaterial;
+            return tankModel.tankMaterial;
         }
 
         public void ReduceHealth(float damage)
@@ -40,16 +38,21 @@ namespace BATTLE_TANKS
             enemyTankView.DestroyTank();
         }
 
-        public Vector3 GetNextDestination()
+        public Vector3 GetRandomPoint(Vector3 center, float range)
         {
-            int nextPathNumber;
-            do 
-            {
-                nextPathNumber = Random.Range(0, enemyTankModel.patrolPath.Length);
-            }   while (currentPathNumber == nextPathNumber);
-            
-            currentPathNumber = nextPathNumber;
-            return enemyTankModel.patrolPath[nextPathNumber];
+            bool pointFound = false;
+            Vector3 randomPoint;
+            Vector3 result = Vector3.zero;
+            NavMeshHit hit;
+            do {
+                randomPoint = center + Random.insideUnitSphere * range;
+
+                if(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)){
+                    result = hit.position;
+                    pointFound = true;
+                }
+            } while (pointFound == false);
+            return result;
         }
     }
 }

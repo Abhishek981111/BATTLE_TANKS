@@ -301,7 +301,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.EnemyTankSpawner
   tankListSO: {fileID: 11400000, guid: dd19013955b1882439ddcf60e6e4c8af, type: 2}
   enemyTankView: {fileID: 3824218964221950188, guid: 3aae649c7b4180e4c9aff9ddccba6e75, type: 3}
-  tankPatrolPathListSO: {fileID: 11400000, guid: 47a011fb09f4d3941a048a3cc7b35ae8, type: 2}
+  enemyTankSpawnPoints:
+  - {x: -8, y: 0, z: 0}
+  - {x: -25, y: 0, z: 0}
 --- !u!1 &430845894
 GameObject:
   m_ObjectHideFlags: 0

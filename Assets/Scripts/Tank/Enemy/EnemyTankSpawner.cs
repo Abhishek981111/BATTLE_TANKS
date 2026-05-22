@@ -1,14 +1,13 @@
-using BATTLETANKS;
 using UnityEngine;
 
 namespace BATTLE_TANKS
 {
     public class EnemyTankSpawner : GenericSingleton<EnemyTankSpawner>
     {
-        private EnemyTankModel enemyTankModel;
+        private TankModel tankModel;
         [SerializeField] private TankListSO tankListSO;
         [SerializeField] private EnemyTankView enemyTankView;
-        [SerializeField] private TankPatrolPathListSO tankPatrolPathListSO;
+        [SerializeField] private Vector3[] enemyTankSpawnPoints;    
 
         private void Start()
         {
@@ -17,12 +16,12 @@ namespace BATTLE_TANKS
 
         protected void SpawnEnemyTanks()
         {
-            for (int i = 0; i < tankPatrolPathListSO.patrolPathList.Length; i++)
+            for (int i = 0; i < enemyTankSpawnPoints.Length; i++)
             {
                 int tankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
-                enemyTankModel = new EnemyTankModel(tankListSO.tankSOArray[tankNumber], 
-                    tankPatrolPathListSO.patrolPathList[i]);
-                new EnemyTankController(enemyTankModel, enemyTankView);
+                tankModel = new TankModel(tankListSO.tankSOArray[tankNumber]);
+
+                new EnemyTankController(tankModel, enemyTankView, enemyTankSpawnPoints[i]);
             }
         }
     }

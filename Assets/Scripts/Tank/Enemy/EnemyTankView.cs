@@ -11,7 +11,7 @@ namespace BATTLE_TANKS
         public GameObject bulletSpawnPosition;
         public List<MeshRenderer> tankBody;
         private NavMeshAgent navMeshAgent;
-        private Vector3 nextDestination;
+        [SerializeField] private float range;
 
 
         private void Awake()
@@ -22,11 +22,9 @@ namespace BATTLE_TANKS
 
         private void Update()
         {
-            navMeshAgent.destination = nextDestination;
-            if (transform.position.x == nextDestination.x && 
-                transform.position.z == nextDestination.z)
+            if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
-                nextDestination = enemyTankController.GetNextDestination();
+                navMeshAgent.SetDestination(enemyTankController.GetRandomPoint(transform.position, range));
             }
         }
 
@@ -34,7 +32,7 @@ namespace BATTLE_TANKS
         {
             this.enemyTankController = enemyTankController;
             UpdateTankColor();
-            nextDestination = enemyTankController.GetNextDestination();
+            navMeshAgent.SetDestination(enemyTankController.GetRandomPoint(transform.position, 25));    
         }
 
         private void UpdateTankColor()
