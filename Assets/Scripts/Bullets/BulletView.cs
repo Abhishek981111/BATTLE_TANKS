@@ -28,8 +28,8 @@ namespace BATTLE_TANKS
         {
             if (other.GetComponent<IDamageable>() != null)
             {
-                IDamageable enemyTankView = other.GetComponent<IDamageable>();
-                enemyTankView.Damage(bulletController.GetBulletDamage());
+                IDamageable damageableObject = other.GetComponent<IDamageable>();
+                damageableObject.Damage(bulletController.GetBulletDamage());
             }
             Destroy(gameObject);
         }

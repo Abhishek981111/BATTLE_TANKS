@@ -32,7 +32,7 @@ namespace BATTLE_TANKS
         {
             this.enemyTankController = enemyTankController;
             UpdateTankColor();
-            navMeshAgent.SetDestination(enemyTankController.GetRandomPoint(transform.position, 25));    
+            navMeshAgent.SetDestination(enemyTankController.GetRandomPoint(transform.position, range));    
         }
 
         private void UpdateTankColor()

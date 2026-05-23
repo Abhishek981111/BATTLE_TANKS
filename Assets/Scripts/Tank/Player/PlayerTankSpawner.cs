@@ -5,7 +5,7 @@ namespace BATTLE_TANKS
     public class PlayerTankSpawner : GenericSingleton<PlayerTankSpawner>
     {
         private TankModel tankModel;
-        [SerializeField] private Transform spawnPosition;
+        [SerializeField] private Vector3 spawnPosition;
         [SerializeField] private TankListSO tankListSO;
         [SerializeField] private PlayerTankView playerTankView;
         [SerializeField] private GameObject cam;
@@ -23,7 +23,7 @@ namespace BATTLE_TANKS
             tankModel = new TankModel(tankListSO.tankSOArray[tankNumber]);
 
             new PlayerTankController(tankModel, playerTankView,
-                spawnPosition.position, fixedJoystick);
+                spawnPosition, fixedJoystick);
         }
 
         public void SetCameraToFollowPlayer(Transform playerTransform)
