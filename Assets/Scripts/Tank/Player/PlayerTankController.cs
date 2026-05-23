@@ -29,7 +29,7 @@ namespace BATTLE_TANKS
                 spawnPosition, Quaternion.identity);
             playerTankView.SetTankController(this);
 
-            PlayerTankSpawner.Instance.SetCameraToFollowPlayer(playerTankView.transform);
+            PlayerTankSpawner.Instance.StartFollowingPlayer(playerTankView.transform);
         }
 
         public Material GetMaterial()
@@ -75,6 +75,11 @@ namespace BATTLE_TANKS
             {
                 FireBullet();
             }
+        }
+
+        public float GetCollisionDamage()
+        {
+            return tankModel.damage;
         }
 
     }

@@ -55,7 +55,18 @@ namespace BATTLE_TANKS
 
         public void DestroyTank()
         {
+            PlayerTankSpawner.Instance.StopFollowingPlayer();
             Destroy(gameObject);
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+           IDamageable damageableObject = other.gameObject.GetComponent<IDamageable>();
+
+           if(damageableObject != null)
+           {
+                damageableObject.Damage(playerTankController.GetCollisionDamage());
+           }
         }
     }
 }

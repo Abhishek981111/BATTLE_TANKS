@@ -26,10 +26,15 @@ namespace BATTLE_TANKS
                 spawnPosition, fixedJoystick);
         }
 
-        public void SetCameraToFollowPlayer(Transform playerTransform)
+        public void StartFollowingPlayer(Transform playerTransform)
         {
             cam.transform.position = playerTransform.position + new Vector3 ( 0, 12, -8);
             cam.transform.SetParent(playerTransform);
+        }
+
+        public void StopFollowingPlayer()
+        {
+            cam.transform.SetParent(null);
         }
     }
 }

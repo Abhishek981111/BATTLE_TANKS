@@ -54,5 +54,10 @@ namespace BATTLE_TANKS
             } while (pointFound == false);
             return result;
         }
+
+        public float GetCollisionDamage()
+        {
+            return tankModel.damage;
+        }
     }
 }
