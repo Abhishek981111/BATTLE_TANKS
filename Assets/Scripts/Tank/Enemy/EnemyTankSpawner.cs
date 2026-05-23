@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace BATTLE_TANKS
 {
@@ -8,20 +9,29 @@ namespace BATTLE_TANKS
         [SerializeField] private TankListSO tankListSO;
         [SerializeField] private EnemyTankView enemyTankView;
         [SerializeField] private Vector3[] enemyTankSpawnPoints;    
+        private List<EnemyTankController> enemyTanks;
 
         private void Start()
         {
             SpawnEnemyTanks();
         }
 
-        protected void SpawnEnemyTanks()
+        private void SpawnEnemyTanks()
         {
+            enemyTanks = new List<EnemyTankController>();
             for (int i = 0; i < enemyTankSpawnPoints.Length; i++)
             {
                 int tankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
                 tankModel = new TankModel(tankListSO.tankSOArray[tankNumber]);
 
-                new EnemyTankController(tankModel, enemyTankView, enemyTankSpawnPoints[i]);
+                enemyTanks.Add(new EnemyTankController(tankModel, enemyTankView, enemyTankSpawnPoints[i]));
+            }
+        }
+        public void DestroyAllEnemyTanks()
+        {
+            for (int i = 0; i < enemyTankSpawnPoints.Length; i++)
+            {
+                enemyTanks[i].DestroyTank();
             }
         }
     }
