@@ -88,6 +88,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4386578576042783557
 GameObject:
@@ -177,7 +178,39 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4585045296624926111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510466039580979739}
+  m_Layer: 0
+  m_Name: Bullet Spawn Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510466039580979739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4585045296624926111}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.01, z: 1.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5465003953575627338}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4655675866134302960
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +222,7 @@ GameObject:
   - component: {fileID: 5465003953575627338}
   - component: {fileID: 1427984079876835324}
   - component: {fileID: 3816931204128693229}
-  - component: {fileID: 8435530340335180099}
+  - component: {fileID: 5432110585620809435}
   m_Layer: 0
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -214,6 +247,7 @@ Transform:
   - {fileID: 4857563765344899759}
   - {fileID: 8537098265751929807}
   - {fileID: 7662663631183913792}
+  - {fileID: 510466039580979739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1427984079876835324
@@ -241,7 +275,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!65 &3816931204128693229
 BoxCollider:
@@ -262,9 +296,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.4117942, y: 2.034068, z: 2.9905443}
-  m_Center: {x: -0.016708136, y: 1.0356755, z: 0.097035885}
---- !u!114 &8435530340335180099
+  m_Size: {x: 2.1080317, y: 2.034068, z: 2.9905443}
+  m_Center: {x: -0.023322403, y: 1.0356755, z: 0.097035885}
+--- !u!114 &5432110585620809435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,9 +307,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4655675866134302960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133a1b337f5663f47949d7cc16363927, type: 3}
+  m_Script: {fileID: 11500000, guid: e51f6fb52d789c94dbdeff97c3b14860, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TankView
+  m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.PlayerTankView
+  bulletSpawnPosition: {fileID: 4585045296624926111}
+  tankBody:
+  - {fileID: 3671884075488978518, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}
+  - {fileID: -4514488310174735328, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}
+  - {fileID: -8129601549157164807, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}
+  - {fileID: 6377940651434891802, guid: 5898c21fe4410fb4b833ed09adbeebba, type: 3}
 --- !u!1 &7240967580617511493
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +404,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8330306161142501837
 GameObject:
@@ -453,4 +494,5 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
