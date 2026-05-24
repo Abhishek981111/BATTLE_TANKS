@@ -49,11 +49,6 @@ namespace BATTLE_TANKS
             enemyTankController.ReduceHealth(damage);
         }
 
-        public void DestroyTank()
-        {
-            Destroy(gameObject);
-        }
-
         private void OnCollisionEnter(Collision other)
         {
            IDamageable damageableObject = other.gameObject.GetComponent<IDamageable>();

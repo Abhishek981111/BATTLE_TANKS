@@ -35,8 +35,7 @@ namespace BATTLE_TANKS
             if(tankHealth.IsAlive()){
                 return;
             }
-            enemyTankView.DestroyTank();
-            enemyTankView = null;
+            DestroyTank();
         }
 
         public Vector3 GetRandomPoint(Vector3 center, float range)
@@ -61,12 +60,14 @@ namespace BATTLE_TANKS
             return tankModel.damage;
         }
 
-        public void DestroyTank()
+        public bool DestroyTank()
         {
-            if(enemyTankView)
-            {
-                enemyTankView.DestroyTank();
+            if(enemyTankView == null){
+                return false;
             }
+            GameObject.Destroy(enemyTankView.gameObject);
+            enemyTankView = null;
+            return true;
         }
     }
 }

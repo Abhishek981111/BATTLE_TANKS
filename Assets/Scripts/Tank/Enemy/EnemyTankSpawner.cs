@@ -27,12 +27,9 @@ namespace BATTLE_TANKS
                 enemyTanks.Add(new EnemyTankController(tankModel, enemyTankView, enemyTankSpawnPoints[i]));
             }
         }
-        public void DestroyAllEnemyTanks()
+        public List<EnemyTankController> GetEnemyTankControllerList()
         {
-            for (int i = 0; i < enemyTankSpawnPoints.Length; i++)
-            {
-                enemyTanks[i].DestroyTank();
-            }
+            return enemyTanks;
         }
     }
 }

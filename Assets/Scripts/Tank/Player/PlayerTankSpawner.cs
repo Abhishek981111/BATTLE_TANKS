@@ -36,13 +36,6 @@ namespace BATTLE_TANKS
         public void StopFollowingPlayer()
         {
             cam.transform.SetParent(null);
-            StartCoroutine(DestroyAllEnemiesRoutine());
-        }
-
-        IEnumerator DestroyAllEnemiesRoutine()
-        {
-            yield return new WaitForSeconds(2f);
-            EnemyTankSpawner.Instance.DestroyAllEnemyTanks();
         }
     }
 }

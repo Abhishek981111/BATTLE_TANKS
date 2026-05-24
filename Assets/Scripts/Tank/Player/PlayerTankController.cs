@@ -45,7 +45,14 @@ namespace BATTLE_TANKS
             {
                 return;
             }
-            playerTankView.DestroyTank();
+            DestroyTank();
+        }
+
+        private void DestroyTank()
+        {
+            PlayerTankSpawner.Instance.StopFollowingPlayer();
+            GameObject.Destroy(playerTankView.gameObject);
+            GameOver.Instance.DestroyEverything();
         }
 
 
