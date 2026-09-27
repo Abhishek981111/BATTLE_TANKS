@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 
 namespace BATTLE_TANKS
@@ -50,7 +51,11 @@ namespace BATTLE_TANKS
 
         public void Damage(float damage)
         {
-            playerTankController.ReduceHealth(damage);
+            if (playerTankController.IsTankAlive())
+            {
+                playerTankController.ReduceHealth(damage);
+            }
+                
         }
 
         private void OnCollisionEnter(Collision other)
@@ -61,6 +66,18 @@ namespace BATTLE_TANKS
            {
                 damageableObject.Damage(playerTankController.GetCollisionDamage());
            }
+        }
+
+        public void ShowEffectAndDestroy()
+        {
+            ParticleEffectService.Instance.ShowTankExplosionEffect(transform.position);
+            StartCoroutine(DestroyEnemyTank());
+        }
+
+        IEnumerator DestroyEnemyTank()
+        {
+            yield return new WaitForSeconds(1.0f);
+            Destroy(gameObject);
         }
     }
 }

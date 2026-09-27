@@ -30,6 +30,7 @@ namespace BATTLE_TANKS
         public void DestroyEverything()
         {
             moveCamera = true;
+            enemyTanks = EnemyTankSpawner.Instance.GetEnemyTankControllerList();
             StartCoroutine(StartDestruction());
         }
 
@@ -41,12 +42,15 @@ namespace BATTLE_TANKS
 
         IEnumerator DestroyEnemies()
         {
-            enemyTanks = EnemyTankSpawner.Instance.GetEnemyTankControllerList();
+            
             int n = enemyTanks.Count;
             for(int i = 0; i < n; i++)
             {
-                if(enemyTanks[i].DestroyTank() == false)
-                    continue;
+                if(enemyTanks[i].IsTankAlive() == false) 
+                {  
+                    continue; 
+                }
+                enemyTanks[i].KillTank();
                 yield return new WaitForSeconds(delay);
             }
         }
@@ -54,10 +58,10 @@ namespace BATTLE_TANKS
         IEnumerator DestroyEnvironment()
         {
             int n = environment.childCount;
-            for(int i= n-1; i > 0; i--)
+            for(int i=n-1; i>=0; i--)
             {
-                Destroy(environment.GetChild(i).gameObject);
                 yield return new WaitForSeconds(delay);
+                Destroy(environment.GetChild(i).gameObject);
             }
         }
 

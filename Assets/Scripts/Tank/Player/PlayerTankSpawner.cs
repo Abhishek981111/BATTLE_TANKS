@@ -21,7 +21,7 @@ namespace BATTLE_TANKS
         private void SpawnPlayerTank()
         {
             int tankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
-            tankModel = new TankModel(tankListSO.tankSOArray[tankNumber]);
+            tankModel = new TankModel(tankListSO.tankSOArray[2]);
 
             new PlayerTankController(tankModel, playerTankView,
                 spawnPosition, fixedJoystick);

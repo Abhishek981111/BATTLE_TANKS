@@ -1,30 +1,26 @@
+using UnityEngine;
+
 namespace BATTLE_TANKS
 {
     public class TankHealth
     {
         private float currentHealth;
-        private bool isAlive;
+        private float maxHealth;
 
 
         public TankHealth(float health)
         {
-            currentHealth = health;
-            isAlive = true;
+            currentHealth = maxHealth - health;
         }
 
         public void ReduceHealth(float damage)
         {
-            currentHealth -= damage;
-
-            if (currentHealth <= 0)
-            {
-                isAlive = false;
-            }
+            currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
         }
 
-        public bool IsAlive()
+        public bool IsDead()
         {
-            return isAlive;
+            return currentHealth == 0;
         }
     }
 }    
