@@ -4,32 +4,16 @@ using UnityEngine;
 
 namespace BATTLE_TANKS
 {
-    public class GameOver : GenericSingleton<GameOver>
+    public class DestructionService : GenericSingleton<DestructionService>
     {
         private List<EnemyTankController> enemyTanks;
         [SerializeField] private Transform environment;
         [SerializeField] private float delay;
-        private bool moveCamera;
-        private float cameraSize;
-
-
-        private void Start() 
-        {
-            moveCamera = false;
-            cameraSize = 10;
-        }
-
-        private void Update() 
-        {
-            if(moveCamera){
-                cameraSize += 1.0f * Time.deltaTime;
-                Camera.main.orthographicSize = cameraSize;
-            }
-        }
+        
 
         public void DestroyEverything()
         {
-            moveCamera = true;
+            CameraService.Instance.SetCameraZoomOut(true);
             enemyTanks = EnemyTankSpawner.Instance.GetEnemyTankControllerList();
             StartCoroutine(StartDestruction());
         }
@@ -63,6 +47,7 @@ namespace BATTLE_TANKS
                 yield return new WaitForSeconds(delay);
                 Destroy(environment.GetChild(i).gameObject);
             }
+            CameraService.Instance.SetCameraZoomOut(false);
         }
 
     }

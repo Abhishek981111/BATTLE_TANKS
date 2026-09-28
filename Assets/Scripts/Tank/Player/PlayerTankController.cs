@@ -29,7 +29,7 @@ namespace BATTLE_TANKS
                 spawnPosition, Quaternion.identity);
             playerTankView.SetTankController(this);
 
-            PlayerTankSpawner.Instance.StartFollowingPlayer(playerTankView.transform);
+            CameraService.Instance.StartFollowingPlayer(playerTankView.transform);
         }
 
         public Material GetMaterial()
@@ -92,9 +92,9 @@ namespace BATTLE_TANKS
 
         private void DestroyTank()
         {
-            PlayerTankSpawner.Instance.StopFollowingPlayer();
+            CameraService.Instance.StopFollowingPlayer();
             playerTankView.ShowEffectAndDestroy();
-            GameOver.Instance.DestroyEverything();
+            DestructionService.Instance.DestroyEverything();
         }
 
     }

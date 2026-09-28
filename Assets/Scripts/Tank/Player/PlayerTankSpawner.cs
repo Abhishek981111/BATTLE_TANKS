@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 namespace BATTLE_TANKS
 {
@@ -9,7 +8,6 @@ namespace BATTLE_TANKS
         [SerializeField] private Vector3 spawnPosition;
         [SerializeField] private TankListSO tankListSO;
         [SerializeField] private PlayerTankView playerTankView;
-        [SerializeField] private GameObject cam;
         [SerializeField] private FixedJoystick fixedJoystick;
 
 
@@ -21,21 +19,11 @@ namespace BATTLE_TANKS
         private void SpawnPlayerTank()
         {
             int tankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
-            tankModel = new TankModel(tankListSO.tankSOArray[2]);
+            tankModel = new TankModel(tankListSO.tankSOArray[tankNumber]);
 
             new PlayerTankController(tankModel, playerTankView,
                 spawnPosition, fixedJoystick);
         }
 
-        public void StartFollowingPlayer(Transform playerTransform)
-        {
-            cam.transform.position = playerTransform.position + new Vector3 ( 0, 12, -8);
-            cam.transform.SetParent(playerTransform);
-        }
-
-        public void StopFollowingPlayer()
-        {
-            cam.transform.SetParent(null);
-        }
     }
 }
