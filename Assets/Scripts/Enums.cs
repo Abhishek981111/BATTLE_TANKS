@@ -7,20 +7,7 @@ namespace BATTLE_TANKS
         RED_TANK,
         GREEN_TANK,
         BLUE_TANK, 
-        Yellow_Tank
-    }
-
-    public enum TankMovement
-    {
-        IDLE,
-        FORWARD
-    }
-
-    public enum TankRotation
-    {
-        NONE,
-        LEFT,
-        RIGHT
+        YELLOW_TANK
     }
 
     public enum BulletType

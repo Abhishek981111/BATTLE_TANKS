@@ -1,15 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 
 namespace BATTLE_TANKS
 {
     public class PlayerTankView : MonoBehaviour, IDamageable
     {
+        public List<MeshRenderer> tankBody;
+        public GameObject bulletSpawnPosition;
+
         private PlayerTankController playerTankController;
         private Rigidbody tankRigidbody;
-        public GameObject bulletSpawnPosition;
-        public List<MeshRenderer> tankBody;
+        private Coroutine destroyCoroutine;
+
 
 
         private void Awake()
@@ -50,11 +54,37 @@ namespace BATTLE_TANKS
 
         public void Damage(float damage)
         {
-            playerTankController.ReduceHealth(damage);
+            if (playerTankController.IsTankAlive())
+            {
+                playerTankController.ReduceHealth(damage);
+            }
+                
         }
 
-        public void DestroyTank()
+        private void OnCollisionEnter(Collision other)
         {
+           IDamageable damageableObject = other.gameObject.GetComponent<IDamageable>();
+
+           if(damageableObject != null)
+           {
+                damageableObject.Damage(playerTankController.GetCollisionDamage());
+           }
+        }
+
+        public void ShowEffectAndDestroy()
+        {
+            if(destroyCoroutine != null)
+            {
+                return;
+            }
+            destroyCoroutine = StartCoroutine(DestroyEnemyTank());
+            
+            ParticleEffectService.Instance.ShowTankExplosionEffect(transform.position);
+        }
+
+        IEnumerator DestroyEnemyTank()
+        {
+            yield return new WaitForSeconds(1.0f);
             Destroy(gameObject);
         }
     }

@@ -8,7 +8,6 @@ namespace BATTLE_TANKS
         [SerializeField] private Vector3 spawnPosition;
         [SerializeField] private TankListSO tankListSO;
         [SerializeField] private PlayerTankView playerTankView;
-        [SerializeField] private GameObject cam;
         [SerializeField] private FixedJoystick fixedJoystick;
 
 
@@ -26,10 +25,5 @@ namespace BATTLE_TANKS
                 spawnPosition, fixedJoystick);
         }
 
-        public void SetCameraToFollowPlayer(Transform playerTransform)
-        {
-            cam.transform.position = playerTransform.position + new Vector3 ( 0, 12, -8);
-            cam.transform.SetParent(playerTransform);
-        }
     }
 }
