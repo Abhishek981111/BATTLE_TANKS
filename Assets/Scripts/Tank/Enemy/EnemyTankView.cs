@@ -7,12 +7,16 @@ namespace BATTLE_TANKS
 {
     public class EnemyTankView : MonoBehaviour, IDamageable
     {
+        public List<MeshRenderer> tankBody;
+        public GameObject bulletSpawnPosition;
+
         private EnemyTankController enemyTankController;
         private Rigidbody tankRigidbody;
-        public GameObject bulletSpawnPosition;
-        public List<MeshRenderer> tankBody;
         private NavMeshAgent navMeshAgent;
+        private Coroutine destroyCoroutine;
+
         [SerializeField] private float range;
+
 
 
         private void Awake()
@@ -65,9 +69,14 @@ namespace BATTLE_TANKS
 
         public void ShowEffectAndDestroy()
         {
+            if(destroyCoroutine != null)
+            {
+                return;
+            }
+            destroyCoroutine = StartCoroutine(DestroyEnemyTank());
+
             ParticleEffectService.Instance.ShowTankExplosionEffect(transform.position);
             navMeshAgent.isStopped = true;
-            StartCoroutine(DestroyEnemyTank());
         }
 
         IEnumerator DestroyEnemyTank()

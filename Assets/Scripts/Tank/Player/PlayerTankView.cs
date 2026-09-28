@@ -7,10 +7,13 @@ namespace BATTLE_TANKS
 {
     public class PlayerTankView : MonoBehaviour, IDamageable
     {
+        public List<MeshRenderer> tankBody;
+        public GameObject bulletSpawnPosition;
+
         private PlayerTankController playerTankController;
         private Rigidbody tankRigidbody;
-        public GameObject bulletSpawnPosition;
-        public List<MeshRenderer> tankBody;
+        private Coroutine destroyCoroutine;
+
 
 
         private void Awake()
@@ -70,8 +73,13 @@ namespace BATTLE_TANKS
 
         public void ShowEffectAndDestroy()
         {
+            if(destroyCoroutine != null)
+            {
+                return;
+            }
+            destroyCoroutine = StartCoroutine(DestroyEnemyTank());
+            
             ParticleEffectService.Instance.ShowTankExplosionEffect(transform.position);
-            StartCoroutine(DestroyEnemyTank());
         }
 
         IEnumerator DestroyEnemyTank()
