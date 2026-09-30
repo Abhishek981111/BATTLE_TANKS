@@ -11,22 +11,10 @@ namespace BATTLE_TANKS
         public GameObject bulletSpawnPosition;
 
         private EnemyTankController enemyTankController;
-        private Rigidbody tankRigidbody;
         private Coroutine destroyCoroutine;
 
         [SerializeField] private float range;
 
-
-
-        private void Awake()
-        {
-            tankRigidbody = GetComponent<Rigidbody>();
-        }
-
-        private void Update()
-        {
-            enemyTankController.GetCurrentState().Tick();
-        }
 
         public void SetTankController(EnemyTankController enemyTankController)
         {

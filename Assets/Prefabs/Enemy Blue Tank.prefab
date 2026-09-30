@@ -118,6 +118,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4639569946996227874}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8927997397220353218}
   m_SourcePrefab: {fileID: 100100000, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
 --- !u!4 &8324124205964066822 stripped
 Transform:
@@ -191,12 +194,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c6d4edfaeb0174192dc3b686d1f84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.EnemyTankView
-  bulletSpawnPosition: {fileID: 2520665379296874311}
   tankBody:
   - {fileID: 4867739868979831831, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
   - {fileID: 1522006957048395320, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
   - {fileID: -3267293247009464647, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
   - {fileID: -7144782785321333953, guid: 06cdc8d71bc5371408b340eb71884fd3, type: 3}
+  bulletSpawnPosition: {fileID: 2520665379296874311}
   range: 40
 --- !u!195 &4639569946996227874
 NavMeshAgent:
@@ -220,3 +223,15 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8927997397220353218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705152897048402620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d1bbc387d33524bbfb6acd45746c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BATTLE_TANKS.EnemyStateMachine

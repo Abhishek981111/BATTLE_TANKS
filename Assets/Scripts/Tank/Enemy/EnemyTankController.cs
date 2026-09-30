@@ -8,8 +8,9 @@ namespace BATTLE_TANKS
         private EnemyTankView enemyTankView;
         private TankModel tankModel;  
         private TankHealth tankHealth;
-        private State currentState;
         private NavMeshAgent navMeshAgent;
+        private EnemyStateMachine enemyStateMachine;
+
 
         public EnemyTankController(TankModel tankModel, EnemyTankView enemyTankView, Vector3 spawnPosition)
         {
@@ -26,9 +27,8 @@ namespace BATTLE_TANKS
 
             navMeshAgent = enemyTankView.GetComponent<NavMeshAgent>();
 
+            enemyStateMachine = enemyTankView.GetComponent<EnemyStateMachine>();
             enemyTankView.SetTankController(this);
-
-            SetState(new IdleState(this));
         }
 
         public Material GetMaterial()
@@ -71,36 +71,6 @@ namespace BATTLE_TANKS
         public bool IsTankAlive()
         {
             return !tankHealth.IsDead();
-        }
-
-        public NavMeshAgent GetNavMeshAgent()
-        {
-            return navMeshAgent;
-        }
-
-        public Vector3 GetTankPosition()
-        {
-            return enemyTankView.transform.position;
-        }
-
-        public void SetState(State state)
-        {
-            if(currentState != null)
-            {
-                currentState.OnStateExit();
-            }
-
-            currentState = state;
-
-            if(currentState != null)
-            {
-                currentState.OnStateEnter();
-            }
-        }
-
-        public State GetCurrentState()
-        {
-            return currentState;
         }
     }
 }

@@ -2,14 +2,18 @@ using UnityEngine;
 
 namespace BATTLE_TANKS
 {
-    public class IdleState : State
+    public class IdleState : BaseState
     {
 
         private float idleTime = 5f;
         private float timeElapsed;
+        private EnemyStateMachine enemyStateMachine;
 
 
-        public IdleState(EnemyTankController enemyTankController) : base(enemyTankController){}
+        public IdleState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
+        {
+            this.enemyStateMachine = enemyStateMachine;
+        }
 
         public override void OnStateEnter()
         {
@@ -22,7 +26,7 @@ namespace BATTLE_TANKS
 
             if (timeElapsed >= idleTime)
             {
-                enemyTankController.SetState(new PatrolState(enemyTankController));
+                enemyStateMachine.SetState(enemyStateMachine.patrolState);
             }
         }
     }
