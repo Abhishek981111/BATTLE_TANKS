@@ -16,4 +16,10 @@ namespace BATTLE_TANKS
         FAST,
         SLOW
     }
+
+    public enum TankState
+    {
+        IDLE,
+        PATROL  
+    }
 }

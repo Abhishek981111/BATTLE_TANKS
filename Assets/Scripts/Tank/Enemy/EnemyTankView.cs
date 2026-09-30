@@ -12,7 +12,6 @@ namespace BATTLE_TANKS
 
         private EnemyTankController enemyTankController;
         private Rigidbody tankRigidbody;
-        private NavMeshAgent navMeshAgent;
         private Coroutine destroyCoroutine;
 
         [SerializeField] private float range;
@@ -22,22 +21,17 @@ namespace BATTLE_TANKS
         private void Awake()
         {
             tankRigidbody = GetComponent<Rigidbody>();
-            navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         private void Update()
         {
-            if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-            {
-                navMeshAgent.SetDestination(enemyTankController.GetRandomPoint(transform.position, range));
-            }
+            enemyTankController.GetCurrentState().Tick();
         }
 
         public void SetTankController(EnemyTankController enemyTankController)
         {
             this.enemyTankController = enemyTankController;
             UpdateTankColor();
-            navMeshAgent.SetDestination(enemyTankController.GetRandomPoint(transform.position, range));    
         }
 
         private void UpdateTankColor()
@@ -76,7 +70,6 @@ namespace BATTLE_TANKS
             destroyCoroutine = StartCoroutine(DestroyEnemyTank());
 
             ParticleEffectService.Instance.ShowTankExplosionEffect(transform.position);
-            navMeshAgent.isStopped = true;
         }
 
         IEnumerator DestroyEnemyTank()

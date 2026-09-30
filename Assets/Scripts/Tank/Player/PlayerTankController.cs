@@ -59,17 +59,17 @@ namespace BATTLE_TANKS
 
         public Vector3 GetMovementVelocity()
         {
-            //return Input.GetAxisRaw("Vertical") * 
-            //tankModel.movementSpeed * playerTankView.transform.forward;
-            return fixedJoystick.Vertical * tankModel.movementSpeed *
-                playerTankView.transform.forward;
+            return Input.GetAxisRaw("Vertical") * 
+            tankModel.movementSpeed * playerTankView.transform.forward;
+            //return fixedJoystick.Vertical * tankModel.movementSpeed *
+            //    playerTankView.transform.forward;
         }
 
         public float GetRotationAngle()
         {
-            //return Input.GetAxisRaw("Horizontal") * 
-            //tankModel.rotationSpeed;
-            return fixedJoystick.Horizontal * tankModel.rotationSpeed;
+            return Input.GetAxisRaw("Horizontal") * 
+            tankModel.rotationSpeed;
+            //return fixedJoystick.Horizontal * tankModel.rotationSpeed;
         }
 
         public void CheckForPlayerInput()
