@@ -8,7 +8,7 @@ namespace BATTLE_TANKS
 
         private TankModel tankModel;
         private TankHealth tankHealth;
-        private PlayerTankView playerTankView;
+        public PlayerTankView playerTankView { get; private set; }
         private FixedJoystick fixedJoystick;
         
 

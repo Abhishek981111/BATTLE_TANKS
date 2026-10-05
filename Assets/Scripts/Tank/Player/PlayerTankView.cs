@@ -61,7 +61,7 @@ namespace BATTLE_TANKS
                 
         }
 
-        private void OnCollisionEnter(Collision other)
+        /*private void OnCollisionEnter(Collision other)
         {
            IDamageable damageableObject = other.gameObject.GetComponent<IDamageable>();
 
@@ -69,7 +69,7 @@ namespace BATTLE_TANKS
            {
                 damageableObject.Damage(playerTankController.GetCollisionDamage());
            }
-        }
+        }*/
 
         public void ShowEffectAndDestroy()
         {

@@ -17,6 +17,7 @@ namespace BATTLE_TANKS
 
         public override void OnStateEnter()
         {
+            enemyStateMachine.navMeshAgent.isStopped = true;
             timeElapsed = 0f;
         }
 
@@ -27,6 +28,10 @@ namespace BATTLE_TANKS
             if (timeElapsed >= idleTime)
             {
                 enemyStateMachine.SetState(enemyStateMachine.patrolState);
+            }
+            if (Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 10f)
+            {
+                enemyStateMachine.SetState(enemyStateMachine.chaseState);
             }
         }
     }

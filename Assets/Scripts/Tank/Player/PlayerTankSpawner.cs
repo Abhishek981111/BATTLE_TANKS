@@ -9,6 +9,7 @@ namespace BATTLE_TANKS
         [SerializeField] private TankListSO tankListSO;
         [SerializeField] private PlayerTankView playerTankView;
         [SerializeField] private FixedJoystick fixedJoystick;
+        public PlayerTankController playerTankController { get; private set; }
 
 
         private void Start()
@@ -21,8 +22,8 @@ namespace BATTLE_TANKS
             int tankNumber = Random.Range(0, tankListSO.tankSOArray.Length);
             tankModel = new TankModel(tankListSO.tankSOArray[tankNumber]);
 
-            new PlayerTankController(tankModel, playerTankView,
-                spawnPosition, fixedJoystick);
+            playerTankController = new PlayerTankController(tankModel, playerTankView, 
+            spawnPosition, fixedJoystick);
         }
 
     }
