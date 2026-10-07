@@ -5,6 +5,9 @@ namespace BATTLE_TANKS
     public class AttackState : BaseState
     {
         private EnemyStateMachine enemyStateMachine;
+        private float fireRPM = 30;
+        private float coolDownTime;
+        
 
         public AttackState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
         {
@@ -18,12 +21,28 @@ namespace BATTLE_TANKS
 
         public override void Tick()
         {
-            if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 5f)
+            if(enemyStateMachine.playerTransform == null)
             {
-                Debug.Log("Shooting bullet!!!");
-            }else
+                stateMachine.SetState(enemyStateMachine.idleState);
+                return;
+            }
+            if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 10)
+            {
+                enemyStateMachine.navMeshAgent.SetDestination(enemyStateMachine.playerTransform.position);
+            }
+            else
             {
                 stateMachine.SetState(enemyStateMachine.chaseState);
+            }
+            if (coolDownTime > 0)
+            {
+                coolDownTime -= Time.deltaTime;
+            }
+            else
+            {
+                BulletService.Instance.SpawnBullet(enemyStateMachine.enemyTankView.bulletSpawnPosition.transform.position, 
+                enemyStateMachine.transform.rotation, enemyStateMachine.enemyTankController.tankModel.bulletType);
+                coolDownTime = 1 / fireRPM * 60; 
             }
         }
     }

@@ -11,11 +11,14 @@ namespace BATTLE_TANKS
         public ChaseState chaseState { get; private set; }
         public NavMeshAgent navMeshAgent { get; private set; }
         public Transform playerTransform { get; private set; }
+        public EnemyTankController enemyTankController { get; private set; }
+        public EnemyTankView enemyTankView { get; private set; }
 
 
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            enemyTankView = GetComponent<EnemyTankView>();
         }
 
         private void Start()
@@ -33,6 +36,11 @@ namespace BATTLE_TANKS
         private void Update()
         {
             currentState.Tick();
+        }
+
+        public void SetEnemyTankController(EnemyTankController enemyTankController)
+        {
+            this.enemyTankController = enemyTankController;
         }
 
         public Vector3 GetRandomPoint(Vector3 center, float range)

@@ -29,9 +29,12 @@ namespace BATTLE_TANKS
             {
                 enemyStateMachine.SetState(enemyStateMachine.patrolState);
             }
-            if (Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 10f)
+            if(enemyStateMachine.playerTransform != null)
             {
-                enemyStateMachine.SetState(enemyStateMachine.chaseState);
+                if (Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 15f)
+                {
+                    enemyStateMachine.SetState(enemyStateMachine.chaseState);
+                }
             }
         }
     }

@@ -23,19 +23,17 @@ namespace BATTLE_TANKS
 
         public override void Tick()
         {
-            if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 10f)
+            if(enemyStateMachine.playerTransform != null)
             {
-                stateMachine.SetState(enemyStateMachine.chaseState);
+                if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 15f)
+                {
+                    stateMachine.SetState(enemyStateMachine.chaseState);
+                }
             }
             if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
                 navMeshAgent.SetDestination(enemyStateMachine.GetRandomPoint(enemyStateMachine.transform.position, 50));
             }
         }
-
-        // public override void OnStateExit()
-        // {
-        //     navMeshAgent.isStopped = true;
-        // }
     }
 }

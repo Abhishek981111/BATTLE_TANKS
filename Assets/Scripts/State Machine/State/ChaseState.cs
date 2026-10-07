@@ -18,11 +18,11 @@ namespace BATTLE_TANKS
 
         public override void Tick()
         {
-            if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 5f)
+            if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 10f)
             {
                 stateMachine.SetState(enemyStateMachine.attackState);
             }
-            else if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 10f)
+            else if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 15f)
             {
                 enemyStateMachine.navMeshAgent.SetDestination(enemyStateMachine.playerTransform.position);
             }
