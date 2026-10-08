@@ -5,13 +5,13 @@ namespace BATTLE_TANKS
     public class TankModel
     {
 
-        public TankType tankType;
-        public BulletType bulletType;
-        public float health;
-        public float damage;
-        public float movementSpeed;
-        public float rotationSpeed;
-        public Material tankMaterial;
+        public TankType tankType { get; }
+        public BulletType bulletType { get; }
+        public float health { get; }
+        public float damage { get; }
+        public float movementSpeed { get; }
+        public float rotationSpeed { get; }
+        public Material tankMaterial { get; }
 
 
         public TankModel(TankSO tankSO)

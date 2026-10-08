@@ -5,7 +5,7 @@ namespace BATTLE_TANKS
     public class IdleState : BaseState
     {
 
-        private float idleTime = 5f;
+        private float idleTime;
         private float timeElapsed;
         private EnemyStateMachine enemyStateMachine;
 
@@ -13,6 +13,7 @@ namespace BATTLE_TANKS
         public IdleState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
         {
             this.enemyStateMachine = enemyStateMachine;
+            idleTime = 3f;
         }
 
         public override void OnStateEnter()
@@ -31,7 +32,7 @@ namespace BATTLE_TANKS
             }
             if(enemyStateMachine.playerTransform != null)
             {
-                if (Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 15f)
+                if (Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < enemyStateMachine.chaseRange)
                 {
                     enemyStateMachine.SetState(enemyStateMachine.chaseState);
                 }

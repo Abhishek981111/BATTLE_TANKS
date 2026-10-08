@@ -5,13 +5,14 @@ namespace BATTLE_TANKS
     public class AttackState : BaseState
     {
         private EnemyStateMachine enemyStateMachine;
-        private float fireRPM = 30;
+        private float fireRPM;
         private float coolDownTime;
         
 
         public AttackState(EnemyStateMachine enemyStateMachine) : base(enemyStateMachine)
         {
             this.enemyStateMachine = enemyStateMachine;
+            fireRPM = 30f;
         }
 
         public override void OnStateEnter()
@@ -26,7 +27,7 @@ namespace BATTLE_TANKS
                 stateMachine.SetState(enemyStateMachine.idleState);
                 return;
             }
-            if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 10)
+            if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < enemyStateMachine.attackRange)
             {
                 enemyStateMachine.navMeshAgent.SetDestination(enemyStateMachine.playerTransform.position);
             }

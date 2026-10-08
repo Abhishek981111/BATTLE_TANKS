@@ -40,7 +40,7 @@ namespace BATTLE_TANKS
                 {  
                     continue; 
                 }
-                enemyTanks[i].KillTank();
+                enemyTanks[i].DestroyTank();
                 yield return new WaitForSeconds(delay);
             }
         }

@@ -17,7 +17,7 @@ namespace BATTLE_TANKS
 
         public override void OnStateEnter()
         {
-            navMeshAgent.SetDestination(enemyStateMachine.GetRandomPoint(enemyStateMachine.transform.position, 50));
+            navMeshAgent.SetDestination(enemyStateMachine.GetRandomPoint());
             navMeshAgent.isStopped = false;
         }
 
@@ -25,14 +25,14 @@ namespace BATTLE_TANKS
         {
             if(enemyStateMachine.playerTransform != null)
             {
-                if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < 15f)
+                if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < enemyStateMachine.chaseRange)
                 {
                     stateMachine.SetState(enemyStateMachine.chaseState);
                 }
             }
             if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
-                navMeshAgent.SetDestination(enemyStateMachine.GetRandomPoint(enemyStateMachine.transform.position, 50));
+                navMeshAgent.SetDestination(enemyStateMachine.GetRandomPoint());
             }
         }
     }

@@ -9,10 +9,15 @@ namespace BATTLE_TANKS
         public PatrolState patrolState { get; private set; }
         public AttackState attackState { get; private set; }
         public ChaseState chaseState { get; private set; }
+        public DeadState deadState { get; private set; }
+
         public NavMeshAgent navMeshAgent { get; private set; }
         public Transform playerTransform { get; private set; }
         public EnemyTankController enemyTankController { get; private set; }
         public EnemyTankView enemyTankView { get; private set; }
+        public float chaseRange { get; private set; } 
+        public float attackRange { get; private set; }
+        public float enemyPatrolRange { get; private set; }
 
 
         private void Awake()
@@ -23,19 +28,27 @@ namespace BATTLE_TANKS
 
         private void Start()
         {
+            chaseRange = 15f;
+            attackRange = 10f;  
+            enemyPatrolRange = 50f;
+
             playerTransform = PlayerTankSpawner.Instance.playerTankController.playerTankView.transform;
             
             idleState = new IdleState(this);
             patrolState = new PatrolState(this);
             attackState = new AttackState(this);
             chaseState = new ChaseState(this);
+            deadState = new DeadState(this);
 
             SetState(idleState);
         }
 
         private void Update()
         {
-            currentState.Tick();
+            if(currentState != null)
+            {
+                currentState.Tick();
+            }
         }
 
         public void SetEnemyTankController(EnemyTankController enemyTankController)
@@ -43,7 +56,7 @@ namespace BATTLE_TANKS
             this.enemyTankController = enemyTankController;
         }
 
-        public Vector3 GetRandomPoint(Vector3 center, float range)
+        public Vector3 GetRandomPoint()
         {
             bool pointFound = false;
             Vector3 randomPoint;
@@ -51,7 +64,7 @@ namespace BATTLE_TANKS
             NavMeshHit hit;
             do
             {
-                randomPoint = center + Random.insideUnitSphere * range;
+                randomPoint = transform.position + Random.insideUnitSphere * enemyPatrolRange;
                 if(NavMesh.SamplePosition(randomPoint, out hit, 1, NavMesh.AllAreas))
                 {
                     result = hit.position;
