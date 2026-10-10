@@ -8,7 +8,7 @@ namespace BATTLE_TANKS
 
         private TankModel tankModel;
         private TankHealth tankHealth;
-        private PlayerTankView playerTankView;
+        public PlayerTankView playerTankView { get; private set; }
         private FixedJoystick fixedJoystick;
         
 
@@ -59,17 +59,19 @@ namespace BATTLE_TANKS
 
         public Vector3 GetMovementVelocity()
         {
-            //return Input.GetAxisRaw("Vertical") * 
-            //tankModel.movementSpeed * playerTankView.transform.forward;
-            return fixedJoystick.Vertical * tankModel.movementSpeed *
-                playerTankView.transform.forward;
+            return Input.GetAxisRaw("Vertical") * 
+            tankModel.movementSpeed * playerTankView.transform.forward; //Keyboard input code
+
+            //return fixedJoystick.Vertical * tankModel.movementSpeed * // joystick input cod
+            //    playerTankView.transform.forward;
         }
 
         public float GetRotationAngle()
         {
-            //return Input.GetAxisRaw("Horizontal") * 
-            //tankModel.rotationSpeed;
-            return fixedJoystick.Horizontal * tankModel.rotationSpeed;
+            return Input.GetAxisRaw("Horizontal") * 
+            tankModel.rotationSpeed;    //Keyboard input code
+
+            //return fixedJoystick.Horizontal * tankModel.rotationSpeed; // joystick input code
         }
 
         public void CheckForPlayerInput()
@@ -78,11 +80,6 @@ namespace BATTLE_TANKS
             {
                 FireBullet();
             }
-        }
-
-        public float GetCollisionDamage()
-        {
-            return tankModel.damage;
         }
 
         public bool IsTankAlive()

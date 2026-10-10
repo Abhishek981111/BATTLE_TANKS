@@ -12,7 +12,7 @@ namespace BATTLE_TANKS
         private void Start() 
         {
             cameraZoomOut = false;
-            cameraSize = 10;
+            cameraSize = 15;
         }
 
         private void Update() 

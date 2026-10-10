@@ -61,16 +61,6 @@ namespace BATTLE_TANKS
                 
         }
 
-        private void OnCollisionEnter(Collision other)
-        {
-           IDamageable damageableObject = other.gameObject.GetComponent<IDamageable>();
-
-           if(damageableObject != null)
-           {
-                damageableObject.Damage(playerTankController.GetCollisionDamage());
-           }
-        }
-
         public void ShowEffectAndDestroy()
         {
             if(destroyCoroutine != null)

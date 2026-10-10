@@ -4,8 +4,8 @@ namespace BATTLE_TANKS
 {
     public class BulletController 
     {
-        private BulletModel bulletModel;
-        private BulletView bulletView;
+        public BulletModel bulletModel { get; }
+        public BulletView bulletView { get; private set; }
 
         public BulletController(BulletModel bulletModel, BulletView bulletView,
             Vector3 bulletSpawnPoint, Quaternion bulletSpawnRotation)
@@ -21,16 +21,6 @@ namespace BATTLE_TANKS
             bulletView = GameObject.Instantiate<BulletView>(bulletView,
                 bulletSpawnPoint, bulletSpawnRotation);
             bulletView.SetBulletController(this);
-        }
-
-        public float GetBulletSpeed()
-        {
-            return bulletModel.bulletSpeed;
-        }
-
-        public float GetBulletDamage()
-        {
-            return bulletModel.bulletDamage;
         }
     }
 }

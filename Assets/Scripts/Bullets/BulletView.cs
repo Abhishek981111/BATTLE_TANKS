@@ -21,7 +21,7 @@ namespace BATTLE_TANKS
 
         private void FireBullet()
         {
-            bulletRigidbody.linearVelocity = transform.forward * bulletController.GetBulletSpeed();
+            bulletRigidbody.linearVelocity = transform.forward * bulletController.bulletModel.bulletSpeed;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -29,7 +29,7 @@ namespace BATTLE_TANKS
             if (other.GetComponent<IDamageable>() != null)
             {
                 IDamageable damageableObject = other.GetComponent<IDamageable>();
-                damageableObject.Damage(bulletController.GetBulletDamage());
+                damageableObject.Damage(bulletController.bulletModel.bulletDamage);
             }
             Destroy(gameObject);
         }

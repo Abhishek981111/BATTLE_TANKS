@@ -8,16 +8,16 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Boundries
   - Water
   - UI
-  - 
-  - 
+  - Buildings
+  - Props
   - Ground
   - Players
   - PostProcessing
-  - 
-  - 
+  - Rocks
+  - TreeBushes
   - 
   - 
   - 

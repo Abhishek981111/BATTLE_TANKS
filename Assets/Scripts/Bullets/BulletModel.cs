@@ -2,9 +2,9 @@ namespace BATTLE_TANKS
 {
     public struct BulletModel
     {
-        public BulletType bulletType;
-        public float bulletSpeed;
-        public float bulletDamage;
+        public BulletType bulletType { get; }
+        public float bulletSpeed { get; }
+        public float bulletDamage { get; }
 
 
         public BulletModel(BulletSO bulletSO)
