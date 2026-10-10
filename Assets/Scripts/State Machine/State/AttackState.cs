@@ -22,12 +22,15 @@ namespace BATTLE_TANKS
 
         public override void Tick()
         {
-            if(enemyStateMachine.playerTransform == null)
+            if (coolDownTime > 0)
             {
-                stateMachine.SetState(enemyStateMachine.idleState);
-                return;
+                coolDownTime -= Time.deltaTime;
             }
-            if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < enemyStateMachine.attackRange)
+            else
+            {
+                FireBullet();
+            }
+            if(enemyStateMachine.PlayerTankInAttackRange())
             {
                 enemyStateMachine.navMeshAgent.SetDestination(enemyStateMachine.playerTransform.position);
             }
@@ -35,16 +38,16 @@ namespace BATTLE_TANKS
             {
                 stateMachine.SetState(enemyStateMachine.chaseState);
             }
-            if (coolDownTime > 0)
-            {
-                coolDownTime -= Time.deltaTime;
-            }
-            else
-            {
-                BulletService.Instance.SpawnBullet(enemyStateMachine.enemyTankView.bulletSpawnPosition.transform.position, 
-                enemyStateMachine.transform.rotation, enemyStateMachine.enemyTankController.tankModel.bulletType);
-                coolDownTime = 1 / fireRPM * 60; 
-            }
+        }
+
+        private void FireBullet()
+        {
+            Vector3 bulletSpawnPos = enemyStateMachine.enemyTankView.bulletSpawnPosition.transform.position;
+
+            BulletType bulletType = enemyStateMachine.enemyTankController.tankModel.bulletType;
+            BulletService.Instance.SpawnBullet(bulletSpawnPos, enemyStateMachine.transform.rotation, bulletType);
+
+            coolDownTime = 1 / fireRPM * 60f;  //Converting fire rate from minutes to seconds
         }
     }
 }

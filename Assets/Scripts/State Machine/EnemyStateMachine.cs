@@ -56,6 +56,24 @@ namespace BATTLE_TANKS
             this.enemyTankController = enemyTankController;
         }
 
+        public bool PlayerTankInChaseRange()
+        {
+            if(playerTransform == null)
+            {
+                return false;
+            }
+            return Vector3.Distance(transform.position, playerTransform.position) < chaseRange;
+        }
+
+        public bool PlayerTankInAttackRange()
+        {
+            if(playerTransform == null)
+            {
+                return false;
+            }
+            return Vector3.Distance(transform.position, playerTransform.position) < attackRange;
+        }
+
         public Vector3 GetRandomPoint()
         {
             bool pointFound = false;

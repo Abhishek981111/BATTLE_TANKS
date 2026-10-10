@@ -23,14 +23,11 @@ namespace BATTLE_TANKS
 
         public override void Tick()
         {
-            if(enemyStateMachine.playerTransform != null)
+            if(enemyStateMachine.PlayerTankInChaseRange())
             {
-                if(Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < enemyStateMachine.chaseRange)
-                {
-                    stateMachine.SetState(enemyStateMachine.chaseState);
-                }
+                stateMachine.SetState(enemyStateMachine.chaseState);
             }
-            if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            else if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
                 navMeshAgent.SetDestination(enemyStateMachine.GetRandomPoint());
             }

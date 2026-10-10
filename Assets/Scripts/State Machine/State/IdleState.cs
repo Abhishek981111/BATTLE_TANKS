@@ -28,14 +28,11 @@ namespace BATTLE_TANKS
 
             if (timeElapsed >= idleTime)
             {
-                enemyStateMachine.SetState(enemyStateMachine.patrolState);
+                stateMachine.SetState(enemyStateMachine.patrolState);
             }
-            if(enemyStateMachine.playerTransform != null)
+            else if(enemyStateMachine.PlayerTankInChaseRange())
             {
-                if (Vector3.Distance(enemyStateMachine.transform.position, enemyStateMachine.playerTransform.position) < enemyStateMachine.chaseRange)
-                {
-                    enemyStateMachine.SetState(enemyStateMachine.chaseState);
-                }
+                stateMachine.SetState(enemyStateMachine.chaseState);
             }
         }
     }

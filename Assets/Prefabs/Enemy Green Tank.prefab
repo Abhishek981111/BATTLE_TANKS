@@ -161,7 +161,7 @@ Rigidbody:
   m_GameObject: {fileID: 4307448938527873064}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0.5
+  m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -225,7 +225,6 @@ MonoBehaviour:
   - {fileID: 4075426562163733773, guid: bc5be89d3fb7f6342a6fa663e1e9800d, type: 3}
   - {fileID: 6682079707895069688, guid: bc5be89d3fb7f6342a6fa663e1e9800d, type: 3}
   bulletSpawnPosition: {fileID: 1952944979095499351}
-  range: 40
 --- !u!195 &2699376807783607133
 NavMeshAgent:
   m_ObjectHideFlags: 0
