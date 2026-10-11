@@ -32,7 +32,7 @@ namespace BATTLE_TANKS
             }
             if(enemyStateMachine.PlayerTankInAttackRange())
             {
-                enemyStateMachine.navMeshAgent.SetDestination(enemyStateMachine.playerTransform.position);
+                enemyStateMachine.navMeshAgent.SetDestination(TankService.Instance.GetPlayerTankPosition());
             }
             else
             {

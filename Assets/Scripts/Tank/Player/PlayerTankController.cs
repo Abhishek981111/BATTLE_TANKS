@@ -13,12 +13,12 @@ namespace BATTLE_TANKS
         
 
         public PlayerTankController(TankModel tankModel, PlayerTankView playerTankView,
-            Vector3 spawnPosition, FixedJoystick fixedJoystick)
+            Vector3 spawnPosition)
         {
             this.tankModel = tankModel;
             tankHealth = new TankHealth(tankModel.health);
             this.playerTankView = playerTankView;
-            this.fixedJoystick = fixedJoystick;
+            this.fixedJoystick = TankService.Instance.GetFixedJoystick();
 
             Initialize(spawnPosition);
         }
@@ -92,6 +92,11 @@ namespace BATTLE_TANKS
             CameraService.Instance.StopFollowingPlayer();
             playerTankView.ShowEffectAndDestroy();
             DestructionService.Instance.DestroyEverything();
+        }
+
+        public Vector3 GetTankPosition()
+        {
+            return playerTankView.transform.position;
         }
 
     }

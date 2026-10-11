@@ -19,7 +19,7 @@ namespace BATTLE_TANKS
                 return;
             }
             CameraService.Instance.SetCameraZoomOut(true);
-            enemyTanks = EnemyTankSpawner.Instance.GetEnemyTankControllerList();
+            enemyTanks = TankService.Instance.enemyTankControllerList;
             destructionCoroutine = StartCoroutine(StartDestruction());
         }
 

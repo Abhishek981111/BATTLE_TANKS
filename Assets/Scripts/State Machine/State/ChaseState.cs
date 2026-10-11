@@ -24,7 +24,7 @@ namespace BATTLE_TANKS
             }
             else if(enemyStateMachine.PlayerTankInChaseRange())
             {
-                enemyStateMachine.navMeshAgent.SetDestination(enemyStateMachine.playerTransform.position);
+                enemyStateMachine.navMeshAgent.SetDestination(TankService.Instance.GetPlayerTankPosition());
             }
             else
             {
